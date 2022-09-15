@@ -3,6 +3,7 @@ import morgan from "morgan";
 import bodyParser from "body-parser";
 import path from "path";
 import routes from "./router";
+import cors from "cors";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -15,6 +16,9 @@ app.set("port", PORT ?? 5000);
 app.use(morgan("dev"));
 app.use(bodyParser());
 app.use(express.json());
+
+// cors
+app.use(cors());
 
 /* Routes */
 app.use("/api/", routes);

@@ -13,7 +13,7 @@ const { JWT_SECRET, JWT_EXPIRE_TIME, JWT_COOKIE_EXPIRE } = process.env;
 
 export const authLogin = async (user: IAuthLogin): Promise<object | string> => {
   const isUser = await User.findBy({ email: user.email });
-  if (isUser[0] === null) {
+  if (isUser[0] === undefined) {
     throw new Error("El usuario no se encuentra registrado");
   } else {
     const isPassword = await desCryptedPasswotd(

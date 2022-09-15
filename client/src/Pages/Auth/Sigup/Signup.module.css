@@ -1,0 +1,26 @@
+.signCard {
+    display: flex;
+    justify-content: center;
+    width: 1354px;
+    /* margin-top: 15px; */
+    padding-top: 25px;
+
+    height: 650px;
+    /* margin-bottom: 50px; */
+    padding-bottom: 50px;
+    /* background-color: #0005; */
+    background-image: url('../../../images/maxresdefault.jpg');
+
+    /* display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 1rem;
+
+    width: 100%;
+    min-width: 10rem;
+    height: 110%;
+    min-height: 100vh;
+
+    padding-bottom: 5rem;
+    background-color: #0005; */
+}
