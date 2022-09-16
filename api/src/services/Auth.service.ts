@@ -1,6 +1,6 @@
-import { User } from "../entity/User.entity";
-import { desCryptedPasswotd } from "./Crypted.utils";
-import { IAuthLogin } from "./type";
+import { UserEntity } from "../entity/User.entity";
+import { desCryptedPasswotd } from "../utils/Crypted.utils";
+import { IAuthLogin } from "../utils/type";
 import jsw from "jsonwebtoken";
 import dotenv from "dotenv";
 dotenv.config();
@@ -12,7 +12,7 @@ const { JWT_SECRET, JWT_EXPIRE_TIME, JWT_COOKIE_EXPIRE } = process.env;
  */
 
 export const authLogin = async (user: IAuthLogin): Promise<object | string> => {
-  const isUser = await User.findBy({ email: user.email });
+  const isUser = await UserEntity.findBy({ email: user.email });
   if (isUser[0] === undefined) {
     throw new Error("El usuario no se encuentra registrado");
   } else {
