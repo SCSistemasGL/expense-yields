@@ -20,7 +20,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "start:gonza":"react-scripts --openssl-legacy-provider start",
+    "start:gonza": "react-scripts --openssl-legacy-provider start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -44,6 +44,7 @@
     ]
   },
   "devDependencies": {
-    "react-icons": "^4.4.0"
+    "react-icons": "^4.4.0",
+    "reactstrap": "^9.1.4"
   }
 }

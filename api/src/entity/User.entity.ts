@@ -5,6 +5,7 @@ import {
   BaseEntity,
   PrimaryColumn,
   OneToMany,
+  CreateDateColumn,
 } from "typeorm";
 import { RegisterEntity } from "./Register.entity";
 
@@ -41,6 +42,9 @@ export class UserEntity extends BaseEntity{
 
   @Column()
   password: string;
+
+  @CreateDateColumn()
+  createdDate: Date;
 
   @OneToMany(() => RegisterEntity, (register) => register.user)
   register: RegisterEntity[];

@@ -6,6 +6,8 @@ import {
   PrimaryColumn,
   Generated,
   ManyToOne,
+  CreateDateColumn,
+  UpdateDateColumn,
 } from "typeorm";
 
 export enum TypeTrasport {
@@ -33,6 +35,9 @@ export class RegisterEntity extends BaseEntity {
 
   @Column({ type: "real", nullable: true })
   moto: number;
+
+  @Column({ type: "real", nullable: true })
+  fuel: number;
 
   @Column({ type: "real", nullable: true })
   parking: number;
@@ -94,6 +99,15 @@ export class RegisterEntity extends BaseEntity {
     nullable: true,
   })
   imageData: Buffer;
+
+  @CreateDateColumn()
+  createdDate: Date;
+
+  @UpdateDateColumn()
+  auditorDate: Date;
+
+  @Column({ default: "pendiente" })
+  status: string;
 
   @ManyToOne(() => UserEntity, (user) => user.register)
   user: UserEntity;
