@@ -7,6 +7,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { validateLogin } from "../../../Utils/validate";
 
 import style from "./NewPasswordCard.module.css";
+import { newPasswordUser } from "../../../Redux/Actions/Auth";
 
 export default function NewPasswordCard({ handleLink }) {
   const dispatch = useDispatch();
@@ -47,7 +48,9 @@ export default function NewPasswordCard({ handleLink }) {
             password: "",
           }));
     } else {
-      const codeRes = await dispatch(input);
+      var conf = window.confirm("Seguro que quieres hacer esta accion??");
+      if (conf) {
+      const codeRes = await dispatch(newPasswordUser(input));
       if (!codeRes) {
         alert("Cuenta habilitada!");
         handleLink({ login: "login" });
@@ -56,6 +59,10 @@ export default function NewPasswordCard({ handleLink }) {
           ...old,
           codeRes: codeRes.error,
         }));
+      }}else{
+        alert("No se cambio su contraseña")
+        handleLink({ login: "login" });
+
       }
     }
   };
