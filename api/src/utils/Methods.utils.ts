@@ -66,16 +66,6 @@ export const parseNumber = (dataFromRequest: any, string: string): string => {
       throw new Error(`Solo numeros , ${string}`);
     }
   }
-//   if (numberLength.includes(string) && dataFromRequest.length < 8) {
-//     if (string === "idCustomer") {
-//       throw new Error(
-//         "Error, idCustomer too short, must be more than 8 characters long"
-//       );
-//     } else {
-//       throw new Error(
-//         `Error, ${string} too short, must be more than 8 characters long`
-//       );
-//     }
-//   }
+
   return dataFromRequest;
 };

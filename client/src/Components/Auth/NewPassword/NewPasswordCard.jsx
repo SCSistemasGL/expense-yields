@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { FaUserCircle, FaKey, FaEye } from "react-icons/fa";
+import { BsFillChatSquareDotsFill } from "react-icons/bs";
+import { useLocation, useNavigate } from "react-router-dom";
 
-import { login } from "../../../Redux/Actions/Auth";
 import { validateLogin } from "../../../Utils/validate";
 
-import style from "./LoginCard.module.css";
+import style from "./NewPasswordCard.module.css";
 
-
-export default function LoginCard({ handleAuth, handleLink }) {
+export default function NewPasswordCard({ handleLink }) {
   const dispatch = useDispatch();
   const [keyOn, setKeyOn] = useState(false);
 
@@ -16,9 +16,11 @@ export default function LoginCard({ handleAuth, handleLink }) {
     email: "",
     password: "",
     code: "",
+    codeRes: "",
   });
   const [input, setInput] = useState({
     email: "",
+    code: "",
     password: "",
   });
 
@@ -30,8 +32,7 @@ export default function LoginCard({ handleAuth, handleLink }) {
     setErrors("");
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     const { email, password } = validateLogin(input);
     if (email || password) {
       setErrors((old) => ({
@@ -46,25 +47,23 @@ export default function LoginCard({ handleAuth, handleLink }) {
             password: "",
           }));
     } else {
-      const code = await dispatch(login(input));
-      if (!code) {
-        handleAuth();
+      const codeRes = await dispatch(input);
+      if (!codeRes) {
+        alert("Cuenta habilitada!");
+        handleLink({ login: "login" });
       } else {
         setErrors((old) => ({
           ...old,
-          code: code.error,
+          codeRes: codeRes.error,
         }));
       }
     }
   };
 
-  const handleForgotPassword = () => {
-    handleLink({forgotPassword:"forgotPassword"})
-  };
   return (
     <div className={style.container}>
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <h1>- INICIAR SESION -</h1>
+      <form>
+        <h1>- NUEVA CONTRASEÑA -</h1>
         <label>
           <h3>Email</h3>
           <div
@@ -78,7 +77,7 @@ export default function LoginCard({ handleAuth, handleLink }) {
               value={input.email}
               name="email"
               onChange={(e) => handleChange(e)}
-              placeholder="Ingrese email"
+              placeholder="Ingrese email..."
               autoComplete="off"
             />
           </div>
@@ -91,7 +90,30 @@ export default function LoginCard({ handleAuth, handleLink }) {
           )}
         </div>
         <label>
-          <h3>Contraseña</h3>
+          <h3>Código</h3>
+          <div
+            className={`${style.inputGroup} ${errors.code ? style.error : ""} `}
+          >
+            <BsFillChatSquareDotsFill />
+            <input
+              type="text"
+              value={input.code}
+              name="code"
+              onChange={(e) => handleChange(e)}
+              placeholder="Ingrese código..."
+              autoComplete="off"
+            />
+          </div>
+        </label>
+        <div>
+          {errors.code ? (
+            <span className={style.errorSpan}>{errors.code}</span>
+          ) : (
+            ""
+          )}
+        </div>
+        <label>
+          <h3>Password</h3>
           <div
             className={`${style.inputGroupPass} ${
               errors.password ? style.error : ""
@@ -103,7 +125,7 @@ export default function LoginCard({ handleAuth, handleLink }) {
               value={input.password}
               name="password"
               onChange={(e) => handleChange(e)}
-              placeholder="Ingrese contraseña"
+              placeholder="Ingrese contraseña..."
             />
             <FaEye
               className={style.keyEye}
@@ -113,14 +135,6 @@ export default function LoginCard({ handleAuth, handleLink }) {
             />
           </div>
         </label>
-        <button
-          className={style.btnSimple}
-          onClick={() => {
-            handleForgotPassword();
-          }}
-        >
-          Olvidaste la contraseña?
-        </button>
         <div>
           {errors.password ? (
             <span className={style.errorSpan}>{errors.password}</span>
@@ -129,14 +143,16 @@ export default function LoginCard({ handleAuth, handleLink }) {
           )}
         </div>
         <div>
-          {errors.code ? (
-            <span className={style.errorSpan}>{errors.code}</span>
+          {errors.codeRes ? (
+            <span className={style.errorSpan}>{errors.codeRes}</span>
           ) : (
             ""
           )}
         </div>
         <div className={style.buttonContainer}>
-          <button type="submit">Iniciar Sesion</button>
+          <button type="submit" onClick={handleSubmit}>
+            Enviar Contraseña
+          </button>
         </div>
       </form>
     </div>

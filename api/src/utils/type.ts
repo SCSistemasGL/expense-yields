@@ -29,8 +29,12 @@ export type IAuthLogin = Omit<
   "id" | "firstName" | "lastName" | "role" | "isActive"
 >;
 
+export interface INewPassword extends IAuthLogin {
+  code: string;
+}
+
 export interface IRegister {
-  imageData: Buffer
+  image: Buffer;
   auto: number;
   remis: number;
   moto: number;

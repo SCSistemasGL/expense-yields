@@ -10,6 +10,5 @@ export const AppDataSource = new DataSource({
   password: "123456789",
   database: "rendimiento_gastos",
   synchronize: true,
-  // logging: true,
   entities: [UserEntity, RegisterEntity],
 });

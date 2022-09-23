@@ -12,23 +12,23 @@ import ImageUpload from "../ImageUpload/ImageUpload";
 
 import InputRegister from "../Input/InputRegister";
 import { englishToSpanich } from "../../Utils/englishToSpanish";
-import { column, props } from "../../Utils/const";
+import { column, nameGroup, props } from "../../Utils/const";
+import { createNewRegister } from "../../Redux/Actions/Register";
 
 export default function NewRegister({ isRegister, registers }) {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.email);
-  const [input, setInput] = useState({...props})
+  const [input, setInput] = useState({ ...props, image: null });
 
   const [errors, setErrors] = useState({
     description: "",
   });
-  const [data, setData] = useState({
-    description: "",
+  const [image, setImage] = useState({
     image: null,
   });
 
   const handleChange = ({ target: { name, value } }) => {
-    setInput((old) => ({ ...old, [name]: value }));
+    setInput((old) => ({ ...old, [name]: parseInt(value) }));
     setErrors({
       description: "",
     });
@@ -36,6 +36,10 @@ export default function NewRegister({ isRegister, registers }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(input.image)
+    const register = new FormData();
+    register.append("image", input.image)
+    await dispatch(createNewRegister(register))
     // const { description } = validateNewTicket(data);
     // if (description)
     //   setErrors((old) => ({
@@ -66,54 +70,68 @@ export default function NewRegister({ isRegister, registers }) {
   };
 
   const handleImage = (e) => {
-    if (!e) return setData((old) => ({ ...old, image: null }));
+    // e.target.files[0])
+    // if (!e) return setInput((old) => ({ ...old, image: null }));
     const {
       target: { name, files },
     } = e;
-    setData((old) => ({ ...old, [name]: files[0] }));
+    setInput((old) => ({ ...old, [name]: files[0] }));
+  };
+
+  const inputGroup = (indexGroup) => {
+    return column.map(({ name, group }, index) => {
+      if (englishToSpanich(name) && group === indexGroup) {
+        return (
+          <div className="wrapper_input" key={index}>
+            {englishToSpanich(name)} :
+            <input
+              // pattern="[0-9]
+
+              pattern="[0-9]*"
+              type="number"
+              value={input[name]}
+              name={name}
+              onChange={(e) => handleChange(e)}
+              //   placeholder="Apellido..."
+              autoComplete="off"
+            />
+          </div>
+        );
+      }
+    });
   };
 
   return (
-    <form className="container" onSubmit={(e) => handleSubmit(e)}>
-      <div className="title">
+    <form onSubmit={(e) => handleSubmit(e)}>
+      {/* <div className="title">
         <h1>Nuevo Registro de Rendicion</h1>
-      </div>
-      <label className="wrapper">
+      </div> */}
+      {/* <label className="wrapper">
         <h4>Usuario:</h4>
         <div className={user}>
           {user}
         </div>
-      </label>
+      </label> */}
 
-      <label className="wrapper">
+      <div className="wrapper">
         {/* <InputRegister registers={registers}/> */}
-        {column.map(({name, group}) => {
-          if (englishToSpanich(name)) {
-            return (
-              <div className={`inputGroup ${group}`}>
-                {englishToSpanich(name)} :
-                <input
-                  // pattern="[0-9]
-                  // className={group}
-                  pattern="[0-9]*"
-                  type="number"
-                  value={input[name]}
-                  name={name}
-                  onChange={(e) => handleChange(e)}
-                  //   placeholder="Apellido..."
-                  autoComplete="off"
-                />
-              </div>
-            );
-          }
+        {nameGroup.map(({ group }, index) => {
+          return <div className={group} key={index}>{inputGroup(group)} </div>;
         })}
-      </label>
+        <div className="footer">
 
-      <ImageUpload onChange={handleImage} />
-
-      <button className="submit" type="submit">
-        Crear Ticket
-      </button>
+        
+      <input
+        onChange={handleImage}
+        name="image"
+        type="file"
+        placeholder="Image"
+      />
+        <button className="submit" type="submit">
+          Crear Ticket
+        </button>
+        </div>
+      </div>
     </form>
   );
 }

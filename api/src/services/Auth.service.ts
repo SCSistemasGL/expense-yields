@@ -1,10 +1,12 @@
 import { UserEntity } from "../entity/User.entity";
-import { desCryptedPasswotd } from "../utils/Crypted.utils";
-import { IAuthLogin } from "../utils/type";
+import { desCryptedPasswotd, encryptedPassword } from "../utils/Crypted.utils";
+import { IAuthLogin, INewPassword } from "../utils/type";
 import jsw from "jsonwebtoken";
 import dotenv from "dotenv";
+import sendEmailNewPassword from "../utils/InfoEmail.utils";
+
 dotenv.config();
-const { JWT_SECRET, JWT_EXPIRE_TIME, JWT_COOKIE_EXPIRE } = process.env;
+const { JWT_EXPIRE_TIME } = process.env;
 /**
  *
  * @param user
@@ -33,4 +35,44 @@ export const authLogin = async (user: IAuthLogin): Promise<object | string> => {
       };
     }
   }
+};
+
+export const authForgotPassword = async (
+  user: INewPassword
+): Promise<string | object> => {
+  const isUser = await UserEntity.findBy({ email: user.email });
+  if (isUser[0] === undefined) {
+    throw new Error("El usuario no se encuentra registrado");
+  } else {
+    if (!user.code) {
+      const password = newRandomPass();
+      await UserEntity.update({ email: user.email }, { password });
+      sendEmailNewPassword(user.email, password);
+      return { msg: "Contraseña cambiada con exitos" };
+    } else {
+      const isUser = await UserEntity.findBy({ email: user.email });
+      if (isUser[0].password === user.code) {
+        const isPassword = encryptedPassword(user.password);
+        await UserEntity.update(
+          { email: user.email },
+          { password: isPassword }
+        );
+        return { msg: "Contraseña cambiada con exitos" };
+      } else {
+        throw new Error("Error, el codigo o el email no es el correcto");
+      }
+    }
+  }
+};
+
+const newRandomPass = () => {
+  var password = "";
+  var str =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + "abcdefghijklmnopqrstuvwxyz0123456789";
+  for (let i = 1; i <= 8; i++) {
+    var char = Math.floor(Math.random() * str.length + 1);
+    password += str.charAt(char);
+  }
+
+  return password;
 };

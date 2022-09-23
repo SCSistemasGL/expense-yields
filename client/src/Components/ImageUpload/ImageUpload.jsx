@@ -40,28 +40,6 @@ export default function ImageUpload({ onChange, imagedata, edit }) {
       ) : (
         <></>
       )}
-
-      {/* {data?.imageData ? (
-        <div className={styles.imageContainer}>
-          <img
-            className={styles.uploadImage}
-            src={`data:${data?.imageType};base64, ${data?.imageData}`}
-            alt=""
-          />
-        </div>
-      ) : (data && Object.values(data).filter((value) => value).length) ||
-        data?.name ? (
-        <div className={styles.imageContainer}>
-          <img
-            className={styles.uploadImage}
-            src={URL.createObjectURL(data)}
-            alt=""
-          />
-        </div>
-      ) : (
-        <></>
-      )} */}
-
       <input
         onChange={handleChange}
         name="image"

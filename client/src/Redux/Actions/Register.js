@@ -1,5 +1,5 @@
 import axios from "axios"
-import { SEARCH_REGISTER_EMAIL, URL_SEARCH_REGISTER_EMAIL } from "./ActionsTypes"
+import { CREATE_NEW_REGISTER, SEARCH_REGISTER_EMAIL, URL_CREATE_NEW_REGISTER, URL_SEARCH_REGISTER_EMAIL } from "./ActionsTypes"
 
 export function searchRegisterEmail(email) {
     return async (dispatch) => {
@@ -13,3 +13,15 @@ export function searchRegisterEmail(email) {
     };
   }
   
+export function createNewRegister(data) {
+  console.log(data._boundary)
+  return async (dispatch) => {
+    try{
+      const response = await axios.post(URL_CREATE_NEW_REGISTER, data,{"Content-Type": `multipart/form-data; boundary=${data._boundary}`,});
+      dispatch({ type: CREATE_NEW_REGISTER, payload: response });
+    }catch (e){
+      console.log(e.response.data);
+      return e.response.data;
+    }
+  }
+}

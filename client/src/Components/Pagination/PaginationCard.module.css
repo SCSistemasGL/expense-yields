@@ -33,15 +33,12 @@
 
 .pagination li{
     list-style: none;
-
     margin: 0 5px;
-
 }
 
 
 
 .pgNum{
-
     text-align: center;
     cursor: pointer;
 }
@@ -49,7 +46,6 @@
 
 
 .pgNum:hover {
-
     color: hsl(226deg, 100%, 70%);
     border-radius: 50%;
     transition: all 1s ease;

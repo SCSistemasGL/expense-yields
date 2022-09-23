@@ -1,8 +1,10 @@
 import axios from "axios";
 import {
+  FORGOT_PASSWORD,
   LOGIN,
   LOGOUT,
   SIGNUP,
+  URL_FORGOT_PASSWORD,
   URL_LOGIN,
   URL_SIGNUP,
 } from "./ActionsTypes";
@@ -40,14 +42,14 @@ export function logout() {
   };
 }
 
-// export function newPasswordUser(data) {
-//   return async (dispatch) => {
-//     try {
-//       const response = await axios.put(URL_NEW_PASSWORD_USER, data);
-//       dispatch({ type: NEW_PASSWORD_USER, payload: response });
-//     } catch (e) {
-//       console.log(e.response.data);
-//       return e.response.data;
-//     }
-//   };
-// }
+export function newPasswordUser(data) {
+  return async (dispatch) => {
+    try {
+      const response = await axios.put(URL_FORGOT_PASSWORD, data);
+      dispatch({ type: FORGOT_PASSWORD, payload: response });
+    } catch (e) {
+      console.log(e.response.data);
+      return e.response.data;
+    }
+  };
+}

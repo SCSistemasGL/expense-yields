@@ -1,13 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { FiLogIn, FiLogOut } from "react-icons/fi";
+import { FiLogOut } from "react-icons/fi";
 
 import Menu from "./Menu/Menu";
-import logo from "../../images/Logo.png"
 import { logout } from "../../Redux/Actions/Auth";
-
 
 import styles from "./NavBar.module.css";
 
@@ -19,7 +17,7 @@ export default function Navbar() {
 
   const logoutNav = () => {
     dispatch(logout());
-    navigate("/login");
+    navigate("/auth");
   };
 
   return (
@@ -28,48 +26,42 @@ export default function Navbar() {
         <div className={styles.left}>
           {session ? (
             <Link className={styles.brand} to={path}>
-              <span>SA</span>
-              <img src={logo} className={styles.logo} alt="" />
+              <img
+                src="https://servi-compras.com.ar/img/logoServiComprasHeader.svg"
+                className={styles.logo}
+                alt=""
+              />
             </Link>
           ) : (
-            <Link
-              className={styles.brand}
-              to={`${path === "/login" ? "/admin/login" : "/login"}`}
-            >
-              <span>SA</span>
-              <img src={logo} className={styles.logo} alt="" />
+            <Link className={styles.brand} to="/auth">
+              <img
+                src="https://servi-compras.com.ar/img/logoServiComprasHeader.svg"
+                className={styles.logo}
+                alt=""
+              />
             </Link>
           )}
         </div>
 
-          <ul className={styles.menu}>
-            <Menu home notification />
-          </ul>
-
+        <ul className={styles.menu}>
+          {session ? <Menu home notification /> : <></>}
+        </ul>
 
         <div className={styles.right}>
           {session ? (
             <div>
-             <div className={styles.right}>
-             <button
-               title="Log Out"
-               className={`${styles.nav__link} ${styles.logout}`}
-               onClick={() => logoutNav()}
-             >
-               <FiLogOut />
-             </button>
-           </div>
-           </div>
+              <div className={styles.right}>
+                <button
+                  title="Log Out"
+                  className={`${styles.nav__link} ${styles.logout}`}
+                  onClick={() => logoutNav()}
+                >
+                  <FiLogOut />
+                </button>
+              </div>
+            </div>
           ) : (
-            <NavLink to="/login">
-              <button
-                title="Log In"
-                className={`${styles.nav__link} ${styles.sigup}`}
-                onClick={() => logoutNav()}
-              >
-                <FiLogIn />
-              </button>
-            </NavLink>
+            <></>
           )}
         </div>
       </nav>

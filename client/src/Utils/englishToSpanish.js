@@ -18,8 +18,8 @@ const column = {
   other: "OTROS",
   previousBalance: "SALDO ANTERIOR",
   advancePayment: "ANTICIPO",
-  reintegrationServicom: "REITEGRAR A SERVICOM",
-  reintegrationUser: "REITEGRAR A USUARIO",
+  reintegrationServicom: "REITE. A SERVICOM",
+  reintegrationUser: "REITE. A USUARIO",
   totalSpent: "TOTAL GASTOS",
 };
 

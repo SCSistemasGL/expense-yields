@@ -27,22 +27,23 @@ const validateLogin = ({ email, password }) => {
 };
 
 const validateSignup = ({
-  name,
+  firstName,
   email,
   password,
-  last_name,
+  lastName,
+  role
 }) => {
-  if (!name) return { name: "Error, Debe proporcionar un Nombre" };
-  if (name.length < 3)
+  if (!firstName) return { firstName: "Error, Debe proporcionar un Nombre" };
+  if (firstName.length < 4)
     return {
-      name: "Error, El Nombre debe ser mayor a 3 caracteres",
+      firstName: "Error, El Nombre debe ser mayor a 4 caracteres",
     };
-  if (!last_name) {
-    return { last_name: "Error ,Debe proporcionar un Apellido" };
+  if (!lastName) {
+    return { lastName: "Error, Debe proporcionar un Apellido" };
   }
-  if (last_name.length < 3)
+  if (lastName.length < 4)
     return {
-      last_name: "El Apellido debe ser mayor a 3 caracteres ",
+      lastName: "El Apellido debe ser mayor a 4 caracteres ",
     };
    if (!email) return { email: "Error, Debe proporcionar un email" };
   if (email) {
@@ -50,7 +51,7 @@ const validateSignup = ({
       /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     );
     if (!validate) {
-      return { email: "Error, Is not an email" };
+      return { email: "Error, esto no es un email" };
     }
   }
 
@@ -59,6 +60,7 @@ const validateSignup = ({
     return {
       password: "La contraseña debe tener mas de 6 caracteres",
     };
+  if (!role) return { role: "Debe seleccionar un rol" };
 
   return {};
 };

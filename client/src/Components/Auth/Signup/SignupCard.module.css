@@ -4,7 +4,8 @@
   box-shadow: 0.3em 0.25em 0.5em 0em #0005;
   margin-top: 0rem;
   max-width: 450px;
-  min-height: 660px;
+  min-height: 670px;
+  padding-bottom: 10px;
 }
 
 .container>form {
@@ -13,13 +14,11 @@
 
 
 .container h1 {
-  /* align-self: center; */
   display: flex;
   justify-content: center;
   margin-top: 0;
   border-bottom: 1px solid #1e1e1e;
   margin-bottom: 0;
-
 }
 
 .container label {
@@ -29,7 +28,6 @@
 
 .container h5 {
   margin-bottom: .5rem;
-
   margin-top: 0;
 }
 
@@ -47,7 +45,6 @@
 
 .inputGroup:focus-within {
   outline: 2px solid hsl(226deg, 100%, 70%);
-  ;
 }
 
 .inputGroup:focus-within.error {
@@ -63,7 +60,6 @@
 }
 
 form label {
-  /* margin: 1em 0 0 0; */
   font-size: 0.9rem;
   width: 100%;
   background-color: #fff;
@@ -90,7 +86,6 @@ form label {
 .inputGroup :focus input {
   border: none;
   font-family: "Roboto";
-
 }
 
 .buttonContainer {
@@ -112,19 +107,18 @@ form label {
   padding: 1em;
   text-align: center;
   font-size: 1rem;
-  /* margin: 2em 0 0 0; */
-
+  cursor: pointer;
 }
 
 .buttonContainer button[type="submit"]:hover {
   color: black;
-
 }
 
 .errorSpan {
-  margin-top: 0.2rem;
+  margin-top: 0rem;
   color: #f33;
-  margin-left: 1rem;
+  margin-left: 2rem;
+  font-size: 0.7rem;
 }
 
 @media screen and (max-width: 1100px) {
@@ -171,7 +165,6 @@ form label {
 
 .inputGroupPass:focus-within {
   outline: 2px solid hsl(226deg, 100%, 70%);
-  ;
 }
 
 .inputGroupPass:focus-within .keyEye {

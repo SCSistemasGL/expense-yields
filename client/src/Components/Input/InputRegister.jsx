@@ -34,13 +34,9 @@ export default function InputRegister() {
             <div>
               {englishToSpanich(e.name)} :
               <input
-                // pattern="[0-9]
-                pattern="[0-9]*" 
+                pattern="[0-9]*"
                 type="number"
-                // value={input.lastName}
                 name={e.name}
-                // onChange={(e) => handleChange(e)}
-                //   placeholder="Apellido..."
                 autoComplete="off"
               />
             </div>

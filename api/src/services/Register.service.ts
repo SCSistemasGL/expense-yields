@@ -30,10 +30,8 @@ export const createNewRegisterUser = async (register: IRegister): Promise<object
         newRegister.tip = register.tip
         newRegister.totalSpent = register.totalSpent
         newRegister.user = isUser[0]
-        newRegister.imageData = register.imageData
-        // console.log(register.imageData)
+        newRegister.imageData = register.image
         await newRegister.save()
-        console.log(newRegister)
         return {msg: "Registo creado con exitos!"}
     }
 }
@@ -60,7 +58,5 @@ export const searchRegister = async (email: string | undefined): Promise<object>
                 return {register: isUser[0].register, img: newImgRegister}
             }
         }
-        // const isRegister = await RegisterEntity.find({where: {user.email: email},relations: {user: true}})
-
     }
 }

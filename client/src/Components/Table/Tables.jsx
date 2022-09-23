@@ -1,17 +1,15 @@
 import React from "react";
-import { Card, CardBody, CardTitle, CardSubtitle, Table } from "reactstrap";
-
-import { BiCommentAdd, BiAddToQueue } from "react-icons/bi";
-import styles from "./Tables.module.css";
-// import { avatarUser, utilDate } from "../../Utils/tableUtils";
-import { useDispatch, useSelector } from "react-redux";
-import { RiAlignJustify, RiArrowUpDownFill } from "react-icons/ri";
-import PaginationCard from "../Pagination/PaginationCard";
 import { useState } from "react";
-// import { editTicket, orderTicket } from "../../Redux/Actions/Ticket";
-// import { lowerCaseString } from "../../Utils/lowerCase";
+import { useDispatch, useSelector } from "react-redux";
 
+import { RiAlignJustify, RiArrowUpDownFill } from "react-icons/ri";
+import { Card, CardBody, CardTitle, Table } from "reactstrap";
 import { ImCancelCircle } from "react-icons/im";
+import { BiAddToQueue } from "react-icons/bi";
+
+import styles from "./Tables.module.css";
+
+import PaginationCard from "../Pagination/PaginationCard";
 
 export default function Tables({
   registers,
@@ -19,19 +17,17 @@ export default function Tables({
   setDetailTicket,
   isRegister,
   setFollowTicket,
-  isCancel,
   setCancelTicket
 }) {
   const dispatch = useDispatch();
 
-  //Seteo de cantidad de recetas por pagina
+  //Seteo de cantidad de registros por pagina
   const [currentPage, setCurrentPage] = useState(1); //Pagina actual
-  const [rowPerPage, setRowPerPage] = useState(5); //Cantidad de recetas por pagina
+  const [rowPerPage, setRowPerPage] = useState(5); //Cantidad de registros por pagina
   const indexOfLastRow = currentPage * rowPerPage; //9
   const indexOfFirstRow = indexOfLastRow - rowPerPage; //0--9--18--
   const currentRow = registers[0]? registers.slice(indexOfFirstRow, indexOfLastRow): [];
   const [up, setUp] = useState(false);
-  const user = useSelector((state) =>  state.auth.user)
 
   const [n, setN] = useState(0);
 
@@ -39,11 +35,6 @@ export default function Tables({
   const paginado = (pageNumber) => {
     setN(pageNumber);
     setCurrentPage(pageNumber);
-  };
-
-  const handleSubmit = (id) => {
-    setTicketId(id);
-    setDetailTicket(true);
   };
 
   const handleNewTicket = () => {
@@ -58,7 +49,6 @@ export default function Tables({
 
   const handleOrder = () => {
     setUp((old) => !old);
-    // dispatch(orderTicket(up));
     console.log("Order Ticker")
   };
 

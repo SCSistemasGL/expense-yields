@@ -2,7 +2,6 @@ import { toCreateUser, toUpdateUser } from "../dto's/User.dto";
 import { UserEntity } from "../entity/User.entity";
 import { IUser, IUserUpdate } from "../utils/type";
 import { encryptedPassword } from "../utils/Crypted.utils";
-import { BaseEntity, getRepository } from "typeorm";
 
 /**
  * 

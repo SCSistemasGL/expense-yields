@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import styles from "./Login.module.css";
+import styles from "./Auth.module.css";
 
 //Cards
-import LoginCard from "../../../Components/Auth/Login/LoginCard";
-import NavBarAuth from "../../../Components/NavBarAuth/NavBarAuth";
-import NewPasswordCard from "../../../Components/Auth/NewPassword/NewPasswordCard";
-import ForgotPassword from "../../../Components/Auth/ForgotPassword/ForgotPassword"
-import SignupCard from "../../../Components/Auth/Signup/SignupCard"
+import LoginCard from "../../Components/Auth/Login/LoginCard";
+import NavBarAuth from "../../Components/NavBarAuth/NavBarAuth";
+import NewPasswordCard from "../../Components/Auth/NewPassword/NewPasswordCard";
+import ForgotPassword from "../../Components/Auth/ForgotPassword/ForgotPassword"
+import SignupCard from "../../Components/Auth/Signup/SignupCard"
 
-export default function Login() {
+export default function Auth() {
   const auth = useSelector((state) => state.auth);
   const navitage = useNavigate();
 
@@ -37,7 +37,7 @@ export default function Login() {
       ) : (
         ""
       )}
-      {selectLink.forgotPassword ? <ForgotPassword /> : ""}
+      {selectLink.forgotPassword ? <ForgotPassword handleLink={setSelectLink} /> : ""}
       {selectLink.signup ? <SignupCard setSelectLink={setSelectLink} /> : ""}
     </div>
   );

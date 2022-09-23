@@ -2,16 +2,14 @@
   text-decoration: none;
   color: #1e1e1e;
   list-style: none;
-  
 }
 
 .navbar {
   margin-top: 0rem;
   margin-left: 0rem;
-  background: rgb(102, 207, 255);
+  background: rgb(126, 182, 40);
   position: sticky;
   width: 100%;
-
 }
 
 .navbar input {
@@ -19,14 +17,12 @@
 }
 
 .nav {
-
   width: 95vw;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 4rem;
-
 }
 
 .nav input {
@@ -59,13 +55,13 @@
   margin: 0 1em 0 0;
   background: rgb(224, 217, 217);
   border-radius: 50%;
-
 }
 
 .logo {
   background: rgb(224, 217, 217);
   color: rgb(224, 217, 217);
-  width: 30px;
+  width: 120px;
+  height: 50px;
 }
 
 .brand>span {
@@ -102,13 +98,11 @@
   border-bottom: 2px solid transparent;
   transform: translateY(0);
   transition: all 0.25s ease;
-  
 }
 
 .nav__link:hover {
   transition: all 0.25s;
   transform: translateY(-7px);
-  
 }
 
 .nav__link::after {
@@ -129,7 +123,6 @@
   color: white;
   bottom: -0.5em;
   background-color: rgb(255, 20, 150);
-  
 }
 
 .icon {
@@ -169,7 +162,6 @@
 .profile__menu {
   box-shadow: 0 0.25rem 0.5rem #0001;
   position: absolute;
-  
   top: 110%;
   right: 0%;
   width: 100%;
@@ -208,15 +200,15 @@
   .menu {
     display: none;
   }
-  
+
   .profile__menu__res {
     display: block;
   }
-  
+
   .nav {
     gap: 1em;
   }
-  
+
   .left,
   .right {
     width: max-content;
