@@ -1,17 +1,11 @@
 .container {
-  /* --p: 5em; */
-  /* transform: translate(-50%, -50%); */
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 1em;
-  /* margin: 0 0 0 auto; */
   background-color: #fff;
-  /* margin: 0px auto; */
   overflow: hidden;
   box-shadow: 0.3em 0.25em 0.5em 0em #0005;
-  /* width: 650px; */
-  
   height: 520px;
   margin-top: 0rem;
 }
@@ -26,35 +20,29 @@
 
 
 .container>form>h1 {
-  /* align-self: center; */
   display: flex;
   justify-content: center;
   border-bottom: 1px solid #1e1e1e;
   margin: 0;
-  /* margin-top: 0; */
 }
 
 .inputGroup {
   display: flex;
   align-items: center;
   font-size: 0.9rem;
-
   border: 1px solid #ccc;
   background-color: #fff;
   padding: 0 0 0 1em;
   border-radius: 4px;
   overflow: hidden;
-  /* margin-top: 0; */
   margin-bottom: 0;
   width: 90%;
   margin-left: 1rem;
   margin-top: 0.5rem;
-  
 }
 
 .inputGroup:focus-within {
   outline: 2px solid hsl(226deg, 100%, 70%);
-  
 }
 
 .inputGroup:focus-within.error {
@@ -70,19 +58,16 @@
 }
 
 form label {
-  /* margin: 1em 0 0 0; */
   font-size: 0.9rem;
   width: 100%;
   background-color: #fff;
   font-family: "Roboto";
-  /* padding: 0.75em; */
   border: none;
   margin: 0;
   width: 100%;
   font-size: 0.9rem;
   border: none;
   resize: none;
-  /* margin: 0; */
 }
 
 .inputGroup input {
@@ -94,31 +79,26 @@ form label {
   border: none;
   resize: none;
   outline: 0;
-
 }
 
 .inputGroup :focus input {
   border: none;
   font-family: "Roboto";
-
 }
 
 .buttonContainer {
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin-top: 0;
-  /* padding-bottom: 1rem; */
-  /* border-bottom: 1px solid #1e1e1e; */
+  margin-top: rem;
 }
 
-.buttonContainer div{
+.buttonContainer div {
   display: flex;
   justify-content: center;
   border-bottom: 1px solid #1e1e1e;
   margin-bottom: 1rem;
   margin-top: 1rem;
-  
 }
 
 .buttonContainer button[type="submit"] {
@@ -134,13 +114,10 @@ form label {
   text-align: center;
   font-size: 1rem;
   margin-top: 1rem;
-  /* margin: 2em 0 0 0; */
-
 }
 
 .buttonContainer button[type="submit"]:hover {
   color: black;
-
 }
 
 .errorSpan {
@@ -229,21 +206,21 @@ form label {
   font-family: "Roboto";
 }
 
-label h3{
+label h3 {
   margin-top: 0;
 }
 
-.path{
+.path {
   position: absolute;
   left: 0;
   bottom: 0;
 }
+
 .path button {
   border-radius: 5em;
   border: none;
   color: #fff;
   background-color: hsl(226deg, 100%, 70%);
-  
   display: flex;
   justify-content: center;
   padding: 0.5em;
@@ -254,10 +231,9 @@ label h3{
   cursor: pointer;
 }
 
-.path button:hover{
+.path button:hover {
   color: black;
   border: 1px solid #1e1e1e;
-
 }
 
 .left {
@@ -268,7 +244,6 @@ label h3{
   position: absolute;
   left: 0;
   bottom: 0;
-  
 }
 
 .brand {
@@ -283,7 +258,6 @@ label h3{
   margin: 0 1em 0 0;
   background: rgb(224, 217, 217);
   border-radius: 50%;
-
 }
 
 .logo {
@@ -292,20 +266,19 @@ label h3{
   width: 30px;
 }
 
-.btnSimple{
+.btnSimple {
   text-decoration: none;
   align-self: flex-end;
   padding: 0;
   font-size: 0.8rem;
   border: none;
   margin-top: 1rem;
-  /* display: flex; */
-  /* justify-content: center; */
   margin-left: 11.5rem;
   cursor: pointer;
   color: black;
+  margin-bottom: 3rem;
 }
 
-.btnSimple:hover{
+.btnSimple:hover {
   color: hsl(226deg, 100%, 70%);
 }

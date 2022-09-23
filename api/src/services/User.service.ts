@@ -1,7 +1,7 @@
 import { toCreateUser, toUpdateUser } from "../dto's/User.dto";
-import { User } from "../entity/User.entity";
-import { IUser, IUserUpdate } from "./type";
-import { encryptedPassword } from "./Crypted.utils";
+import { UserEntity } from "../entity/User.entity";
+import { IUser, IUserUpdate } from "../utils/type";
+import { encryptedPassword } from "../utils/Crypted.utils";
 
 /**
  * 
@@ -12,14 +12,14 @@ export const findUser = async (
   idUser: number | undefined
 ): Promise<IUser | string | object> => {
   if (idUser) {
-    const isUser = await User.findBy({ id: idUser });
+    const isUser = await UserEntity.find({where : {id: idUser}, relations: {register: true} });
     if (!isUser[0]) {
       throw new Error("No existe usuario con ese id!");
     } else {
       return isUser;
     }
   } else {
-    const users = await User.find({});
+    const users = await UserEntity.find({relations: {register: true}});
     if (!users[0]) {
         throw new Error("No hay datos cargados!");
     } else {
@@ -31,13 +31,13 @@ export const findUser = async (
 
 export const registerUser = async (user: IUser): Promise<object | string> => {
   toCreateUser(user)
-  const isUser = await User.findOneBy({ email: user.email });
+  const isUser = await UserEntity.findOneBy({ email: user.email });
   if (isUser) {
     throw new Error("Error, existe usuario registrado con ese email");
   } else {
     const { email, firstName, lastName, role, password } = user;
     const newCryptPassword = encryptedPassword(password)
-    const newUser = new User();
+    const newUser = new UserEntity();
     newUser.email = email;
     newUser.firstName = firstName.toLowerCase();
     newUser.lastName = lastName.toLowerCase();
@@ -52,11 +52,11 @@ export const updateUserEmail = async (
   user: IUserUpdate
 ): Promise<object | string> => {
   toUpdateUser(user)
-  const isUser = await User.findBy({ email: user.email });
+  const isUser = await UserEntity.findBy({ email: user.email });
   if (!isUser) {
     throw new Error("No existe usuario con ese email");
   } else {
-    await User.update({ email: user.email }, user);
+    await UserEntity.update({ email: user.email }, user);
     return { msg: "Usuario actualizado con exitos!" };
   }
 };
@@ -67,11 +67,11 @@ export const notActiveUser = async (
   if (!idUser) {
     throw new Error("Debe proporcionar un id para poder eliminar un usuario");
   } else {
-    const isUser = await User.findBy({ id: idUser });
+    const isUser = await UserEntity.findBy({ id: idUser });
     if (!isUser[0]) {
       throw new Error("No existe usuario con ese id!");
     } else {
-      await User.update({ id: idUser }, { isActive: false });
+      await UserEntity.update({ id: idUser }, { isActive: false });
       return { msg: "Usuario eliminado con exitos!" };
     }
   }

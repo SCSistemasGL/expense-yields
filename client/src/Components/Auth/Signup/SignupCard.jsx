@@ -1,15 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { FaUserCircle, FaKey, FaEye } from "react-icons/fa";
-
+import Select from "react-select";
 import { signup } from "../../../Redux/Actions/Auth";
-// import { validateSignup } from "../../../Utils/validate";
+import { validateSignup } from "../../../Utils/validate";
 
 import style from "./SignupCard.module.css";
+import optionSelectRol from "../../../Utils/optionRol";
 
 export default function SigupCard({ isAuth }) {
   const dispatch = useDispatch();
   const [keyOn, setKeyOn] = useState(false);
+
+  const [optionRol, setOptionRol] = useState([]);
+
+  useEffect(() => {
+    setOptionRol(optionSelectRol());
+  }, []);
 
   const [errors, setErrors] = useState({
     firstName: "",
@@ -36,37 +43,41 @@ export default function SigupCard({ isAuth }) {
     setErrors("");
   };
 
+  const handleRol = (e) => {
+    setInput((old) => ({ ...old, role: e.value }));
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // const { name, email, password, last_name } =
-    //   validateSignup(input);
-    // if (email || password ||  name || last_name) {
-    //   setErrors((old) => ({
-    //     ...old,
-    //     name: name ? name : "",
-    //     last_name: last_name ? last_name : "",
-    //     email: email ? email : "",
-    //     password: password ? password : "",
-    //   }));
-    // } else {
+    const { firstName, email, password, lastName, role } =
+      validateSignup(input);
+    console.log(firstName, email, password, lastName, role);
+    if (email || password || firstName || lastName) {
+      setErrors((old) => ({
+        ...old,
+        firstName: firstName ? firstName : "",
+        lastName: lastName ? lastName : "",
+        email: email ? email : "",
+        password: password ? password : "",
+        role: role ? role : "",
+      }));
+    } else {
       var conf = window.confirm("Esta seguro que quiere crear el usuario?");
-      if(conf){
+      if (conf) {
         const code = await dispatch(signup(input));
         if (!code) {
-        alert('Usuario creado con éxito!')
-        isAuth()
+          alert("Usuario creado con éxito!");
+          isAuth();
         } else {
           setErrors((old) => ({
             ...old,
             code: code.error,
           }));
         }
-      }else{
-        alert("Usuario NO CREADO!")
-        isAuth()
+      } else {
+        alert("Usuario NO CREADO!");
+        isAuth();
       }
-    // }
-    
+    }
   };
 
   return (
@@ -76,11 +87,13 @@ export default function SigupCard({ isAuth }) {
         <label>
           <h5>Nombre:</h5>
           <div
-            className={`${style.inputGroup} ${errors.name ? style.error : ""} `}
+            className={`${style.inputGroup} ${
+              errors.firstName ? style.error : ""
+            } `}
           >
             <FaUserCircle />
             <input
-             pattern="[a-zA-Z]+"
+              pattern="[a-zA-Z]+"
               type="text"
               value={input.firstName}
               name="firstName"
@@ -91,8 +104,8 @@ export default function SigupCard({ isAuth }) {
           </div>
         </label>
         <div>
-          {errors.name ? (
-            <span className={style.errorSpan}>{errors.name}</span>
+          {errors.firstName ? (
+            <span className={style.errorSpan}>{errors.firstName}</span>
           ) : (
             ""
           )}
@@ -106,7 +119,7 @@ export default function SigupCard({ isAuth }) {
           >
             <FaUserCircle />
             <input
-            pattern="[a-zA-Z]+"
+              pattern="[a-zA-Z]+"
               type="text"
               value={input.lastName}
               name="lastName"
@@ -118,7 +131,7 @@ export default function SigupCard({ isAuth }) {
         </label>
         <div>
           {errors.lastName ? (
-            <span className={style.errorSpan}>{errors.last_name}</span>
+            <span className={style.errorSpan}>{errors.lastName}</span>
           ) : (
             ""
           )}
@@ -181,19 +194,11 @@ export default function SigupCard({ isAuth }) {
         </div>
         <label>
           <h5>Rol:</h5>
-          <div
-            className={`${style.inputGroup} ${
-              errors.role ? style.error : ""
-            } `}
-          >
-            <FaUserCircle />
-            <input
-              type="tex"
-              value={input.role}
-              name="role"
-              onChange={(e) => handleChange(e)}
-              placeholder="Rol: Admin | Supervisor | Tesorero | User..."
-              autoComplete="off"
+          <div>
+            <Select
+              onChange={(e) => handleRol(e)}
+              options={optionRol}
+              placeholder="Roles..."
             />
           </div>
         </label>
@@ -205,7 +210,7 @@ export default function SigupCard({ isAuth }) {
           )}
         </div>
         <div className={style.buttonContainer}>
-          <button type="submit">SigUp</button>
+          <button type="submit">Registrarse</button>
         </div>
       </form>
     </div>

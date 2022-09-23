@@ -12,6 +12,7 @@
     "react-redux": "^8.0.2",
     "react-router-dom": "^6.4.0",
     "react-scripts": "^2.1.3",
+    "react-select": "^5.4.0",
     "redux": "^4.2.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.1",
@@ -20,6 +21,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start:gonza": "react-scripts --openssl-legacy-provider start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -43,6 +45,7 @@
     ]
   },
   "devDependencies": {
-    "react-icons": "^4.4.0"
+    "react-icons": "^4.4.0",
+    "reactstrap": "^9.1.4"
   }
 }

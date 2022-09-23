@@ -1,6 +1,6 @@
 import express from "express";
 import morgan from "morgan";
-import bodyParser from "body-parser";
+// import urlencoded from "url";
 import path from "path";
 import routes from "./router";
 import cors from "cors";
@@ -14,7 +14,7 @@ const { PORT } = process.env;
 /* settings */
 app.set("port", PORT ?? 5000);
 app.use(morgan("dev"));
-app.use(bodyParser());
+app.use(express.urlencoded());
 app.use(express.json());
 
 // cors

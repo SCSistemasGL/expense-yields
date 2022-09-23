@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import LoginCard from "../../../Components/Auth/Login/LoginCard";
 import styles from "./Login.module.css";
 
+//Cards
+import LoginCard from "../../../Components/Auth/Login/LoginCard";
+import NavBarAuth from "../../../Components/NavBarAuth/NavBarAuth";
+import NewPasswordCard from "../../../Components/Auth/NewPassword/NewPasswordCard";
+import ForgotPassword from "../../../Components/Auth/ForgotPassword/ForgotPassword"
+import SignupCard from "../../../Components/Auth/Signup/SignupCard"
 
 export default function Login() {
   const auth = useSelector((state) => state.auth);
@@ -19,11 +24,21 @@ export default function Login() {
     if (auth.token) navitage("/home");
   }, []);
 
-  
-
   return (
     <div className={styles.container}>
-    <LoginCard  handleAuth={handleAuth} handleLink={setSelectLink}/>
+      <NavBarAuth handleLink={setSelectLink} active={selectLink} signup />
+      {selectLink.login ? (
+        <LoginCard handleAuth={handleAuth} handleLink={setSelectLink} />
+      ) : (
+        ""
+      )}
+      {selectLink.newPassword ? (
+        <NewPasswordCard handleLink={setSelectLink} />
+      ) : (
+        ""
+      )}
+      {selectLink.forgotPassword ? <ForgotPassword /> : ""}
+      {selectLink.signup ? <SignupCard setSelectLink={setSelectLink} /> : ""}
     </div>
   );
 }

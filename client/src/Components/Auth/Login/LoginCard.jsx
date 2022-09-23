@@ -4,19 +4,13 @@ import { FaUserCircle, FaKey, FaEye } from "react-icons/fa";
 
 import { login } from "../../../Redux/Actions/Auth";
 import { validateLogin } from "../../../Utils/validate";
-// import { statusMsg } from "../../Utils/status";
 
 import style from "./LoginCard.module.css";
 
-// import logo from "../../Img/logo.jpeg";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-// import { adminLogin } from "../../../Redux/Actions/Admin";
 
 export default function LoginCard({ handleAuth, handleLink }) {
   const dispatch = useDispatch();
   const [keyOn, setKeyOn] = useState(false);
-  const path = useLocation().pathname;
-  const navigate = useNavigate();
 
   const [errors, setErrors] = useState({
     email: "",
@@ -64,19 +58,13 @@ export default function LoginCard({ handleAuth, handleLink }) {
     }
   };
 
-  const handleSigup = () => {
-    navigate('/signup')
-  }
   const handleForgotPassword = () => {
-    // var conf = window.confirm("?");
-
-    // alert("New password");
     handleLink({forgotPassword:"forgotPassword"})
   };
   return (
     <div className={style.container}>
       <form onSubmit={(e) => handleSubmit(e)}>
-        <h1>- LOGIN -</h1>
+        <h1>- INICIAR SESION -</h1>
         <label>
           <h3>Email</h3>
           <div
@@ -90,7 +78,7 @@ export default function LoginCard({ handleAuth, handleLink }) {
               value={input.email}
               name="email"
               onChange={(e) => handleChange(e)}
-              placeholder="Enter email"
+              placeholder="Ingrese email"
               autoComplete="off"
             />
           </div>
@@ -103,7 +91,7 @@ export default function LoginCard({ handleAuth, handleLink }) {
           )}
         </div>
         <label>
-          <h3>Password</h3>
+          <h3>Contraseña</h3>
           <div
             className={`${style.inputGroupPass} ${
               errors.password ? style.error : ""
@@ -115,7 +103,7 @@ export default function LoginCard({ handleAuth, handleLink }) {
               value={input.password}
               name="password"
               onChange={(e) => handleChange(e)}
-              placeholder="Enter password"
+              placeholder="Ingrese contraseña"
             />
             <FaEye
               className={style.keyEye}
@@ -148,10 +136,7 @@ export default function LoginCard({ handleAuth, handleLink }) {
           )}
         </div>
         <div className={style.buttonContainer}>
-          <button type="submit">Login</button>
-        </div>
-         <div className={style.buttonContainer}>
-          <button type="submit" onClick={handleSigup}>SignUp</button>
+          <button type="submit">Iniciar Sesion</button>
         </div>
       </form>
     </div>

@@ -4,3 +4,22 @@
     background-color: black;
     min-height: 100vh;
 }
+.containerTable{
+    margin-top: 3rem;
+}
+.newRegister {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    z-index: 10;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    min-width: 10rem;
+    min-height: 10rem;
+  
+    margin: 0em auto 2rem auto;
+    background-color: #000a;
+    overflow: auto;
+    padding-top: 4.5rem;
+}

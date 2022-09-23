@@ -4,7 +4,6 @@
   align-items: center;
   gap: 1.5rem;
   margin-top: 1.5rem;
-  /* margin-right: 4rem; */
 }
 
 .menu__link {
@@ -70,9 +69,6 @@
   transform: translateY(0);
   
 }
-
-
-
 
 .activeIcon{
   color: white;

@@ -2,25 +2,7 @@
     display: flex;
     justify-content: center;
     width: 1354px;
-    /* margin-top: 15px; */
     padding-top: 25px;
-
-    height: 525px;
-    /* margin-bottom: 50px; */
     padding-bottom: 50px;
-    /* background-color: #0005; */
     background-image: url('../../../images/maxresdefault.jpg');
-    /* width: 100%;
-    min-width: 10rem; */
-    /* height: 100%; */
-    /* min-height: 80vh; */
 }
-
-/* .loginCard {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-  
- 
-} */

@@ -28,3 +28,33 @@ export type IAuthLogin = Omit<
   IUser,
   "id" | "firstName" | "lastName" | "role" | "isActive"
 >;
+
+export interface INewPassword extends IAuthLogin {
+  code: string;
+}
+
+export interface IRegister {
+  image: Buffer;
+  auto: number;
+  remis: number;
+  moto: number;
+  parking: number;
+  housing: number;
+  breakfast: number;
+  lunch: number;
+  dinner: number;
+  tip: number;
+  bookstore: number;
+  seamstress: number;
+  encomienda: number;
+  correo: number;
+  supermarket: number;
+  cleaning: number;
+  other: number;
+  previousBalance: number;
+  advancePayment: number;
+  reintegrationServicom: number;
+  reintegrationUser: number;
+  totalSpent: number;
+  email: string;
+}

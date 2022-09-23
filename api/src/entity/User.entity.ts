@@ -1,14 +1,23 @@
-import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, PrimaryColumn } from "typeorm";
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  BaseEntity,
+  PrimaryColumn,
+  OneToMany,
+  CreateDateColumn,
+} from "typeorm";
+import { RegisterEntity } from "./Register.entity";
 
 export enum UserRole {
   ADMIN = "admin",
   AUDITOR = "auditor",
   USER = "user",
-  TREASURER ="treasurer"
+  TREASURER = "treasurer",
 }
 
-@Entity()
-export class User extends BaseEntity {
+@Entity({name: "users"})
+export class UserEntity extends BaseEntity{
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -18,7 +27,7 @@ export class User extends BaseEntity {
   @Column()
   lastName: string;
 
-  @PrimaryColumn({unique: true})
+  @PrimaryColumn({ unique: true })
   email: string;
 
   @Column({
@@ -28,9 +37,15 @@ export class User extends BaseEntity {
   })
   role: UserRole;
 
-  @Column({default: true})
-  isActive: boolean
+  @Column({ default: true })
+  isActive: boolean;
 
   @Column()
-  password: string
+  password: string;
+
+  @CreateDateColumn()
+  createdDate: Date;
+
+  @OneToMany(() => RegisterEntity, (register) => register.user)
+  register: RegisterEntity[];
 }
