@@ -7,7 +7,7 @@
 .navbar {
   margin-top: 0rem;
   margin-left: 0rem;
-  background: rgb(126, 182, 40);
+  background: white;
   position: sticky;
   width: 100%;
 }
@@ -53,13 +53,10 @@
 
 .brand>img {
   margin: 0 1em 0 0;
-  background: rgb(224, 217, 217);
-  border-radius: 50%;
+  background: white;
 }
 
 .logo {
-  background: rgb(224, 217, 217);
-  color: rgb(224, 217, 217);
   width: 120px;
   height: 50px;
 }
