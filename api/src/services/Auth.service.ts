@@ -3,7 +3,7 @@ import { desCryptedPasswotd, encryptedPassword } from "../utils/Crypted.utils";
 import { IAuthLogin, INewPassword } from "../utils/type";
 import jsw from "jsonwebtoken";
 import dotenv from "dotenv";
-import sendEmailNewPassword from "../utils/InfoEmail.utils";
+// import sendEmailNewPassword from "../utils/InfoEmail.utils";
 
 dotenv.config();
 const { JWT_EXPIRE_TIME } = process.env;
@@ -47,7 +47,7 @@ export const authForgotPassword = async (
     if (!user.code) {
       const password = newRandomPass();
       await UserEntity.update({ email: user.email }, { password });
-      sendEmailNewPassword(user.email, password);
+      // sendEmailNewPassword(user.email, password);
       return { msg: "Contraseña cambiada con exitos" };
     } else {
       const isUser = await UserEntity.findBy({ email: user.email });

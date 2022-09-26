@@ -38,7 +38,7 @@ export default function Auth() {
         ""
       )}
       {selectLink.forgotPassword ? <ForgotPassword handleLink={setSelectLink} /> : ""}
-      {selectLink.signup ? <SignupCard setSelectLink={setSelectLink} /> : ""}
+      {selectLink.signup ? <SignupCard handleLink={setSelectLink} /> : ""}
     </div>
   );
 }
