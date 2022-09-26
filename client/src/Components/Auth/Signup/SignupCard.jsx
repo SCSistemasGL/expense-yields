@@ -8,7 +8,7 @@ import { validateSignup } from "../../../Utils/validate";
 import style from "./SignupCard.module.css";
 import optionSelectRol from "../../../Utils/optionRol";
 
-export default function SigupCard({ isAuth }) {
+export default function SigupCard({ handleLink, handleAuth }) {
   const dispatch = useDispatch();
   const [keyOn, setKeyOn] = useState(false);
 
@@ -50,7 +50,6 @@ export default function SigupCard({ isAuth }) {
     e.preventDefault();
     const { firstName, email, password, lastName, role } =
       validateSignup(input);
-    console.log(firstName, email, password, lastName, role);
     if (email || password || firstName || lastName) {
       setErrors((old) => ({
         ...old,
@@ -66,7 +65,7 @@ export default function SigupCard({ isAuth }) {
         const code = await dispatch(signup(input));
         if (!code) {
           alert("Usuario creado con éxito!");
-          isAuth();
+          handleLink({ login: "login" });
         } else {
           setErrors((old) => ({
             ...old,
@@ -75,7 +74,7 @@ export default function SigupCard({ isAuth }) {
         }
       } else {
         alert("Usuario NO CREADO!");
-        isAuth();
+        handleLink({ login: "login" });
       }
     }
   };
