@@ -58,3 +58,8 @@ export interface IRegister {
   totalSpent: number;
   email: string;
 }
+
+export interface IPriceFuel {
+  nameProvince: string;
+  priceKm: number;
+}

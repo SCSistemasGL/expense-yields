@@ -17,6 +17,7 @@ export enum TypeTrasport {
 }
 
 import { UserEntity } from "./User.entity";
+import { PriceFuelEntity } from "./PriceFuel.entity";
 
 @Entity({ name: "registers" })
 export class RegisterEntity extends BaseEntity {
@@ -104,11 +105,14 @@ export class RegisterEntity extends BaseEntity {
   createdDate: Date;
 
   @UpdateDateColumn()
-  auditorDate: Date;
+  supervisorDate: Date;
 
   @Column({ default: "pendiente" })
   status: string;
 
   @ManyToOne(() => UserEntity, (user) => user.register)
   user: UserEntity;
+
+  @ManyToOne(() => PriceFuelEntity, (price) => price.register)
+  pricefuel: PriceFuelEntity;
 }

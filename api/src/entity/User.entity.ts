@@ -11,7 +11,7 @@ import { RegisterEntity } from "./Register.entity";
 
 export enum UserRole {
   ADMIN = "admin",
-  AUDITOR = "auditor",
+  SUPERVISOR = "supervisor",
   USER = "user",
   TREASURER = "treasurer",
 }

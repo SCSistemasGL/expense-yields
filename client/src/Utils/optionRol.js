@@ -1,7 +1,7 @@
 const optionSelectRol = () => {
   const rol = [
     { name: "ADMIN", value: "admin" },
-    { name: "AUDITOR", value: "auditor" },
+    { name: "SUPERVISOR", value: "supervisor" },
     { name: "USUARIO", value: "user" },
     { name: "TESORERO", value: "treasurer" },
   ];
