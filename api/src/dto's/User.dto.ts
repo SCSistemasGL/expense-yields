@@ -21,11 +21,11 @@ const parseParameter = (object: any): object => {
 const parseRol = (role: any): string => {
   if (
     UserRole.ADMIN !== role &&
-    UserRole.AUDITOR !== role &&
+    UserRole.SUPERVISOR !== role &&
     UserRole.USER !== role &&
     UserRole.TREASURER != role
   ) {
-    throw new Error("Los roles permitidos son: admin | auditor | tesorero | user");
+    throw new Error("Los roles permitidos son: admin | supervisor | tesorero | user");
   } else {
     return role;
   }

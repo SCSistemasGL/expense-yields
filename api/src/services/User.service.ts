@@ -31,6 +31,7 @@ export const findUser = async (
 
 export const registerUser = async (user: IUser): Promise<object | string> => {
   toCreateUser(user)
+  console.log(user)
   const isUser = await UserEntity.findOneBy({ email: user.email });
   if (isUser) {
     throw new Error("Error, existe usuario registrado con ese email");

@@ -4,11 +4,11 @@ import { useNavigate } from "react-router-dom";
 import styles from "./Auth.module.css";
 
 //Cards
+import NavBarAuth from "../../Components/Navbar/NavBarAuth/NavBarAuth";
 import LoginCard from "../../Components/Auth/Login/LoginCard";
-import NavBarAuth from "../../Components/NavBarAuth/NavBarAuth";
 import NewPasswordCard from "../../Components/Auth/NewPassword/NewPasswordCard";
-import ForgotPassword from "../../Components/Auth/ForgotPassword/ForgotPassword"
-import SignupCard from "../../Components/Auth/Signup/SignupCard"
+import ForgotPassword from "../../Components/Auth/ForgotPassword/ForgotPassword";
+import SignupCard from "../../Components/Auth/Signup/SignupCard";
 
 export default function Auth() {
   const auth = useSelector((state) => state.auth);
@@ -17,11 +17,20 @@ export default function Auth() {
   const [selectLink, setSelectLink] = useState({ login: "login" });
 
   const handleAuth = () => {
-    navitage("/home");
+    console.log(auth)
+    if (auth.role === "supervisor") navitage("/supervisor");
+    else {
+      navitage("/home");
+    }
   };
 
   useEffect(() => {
-    if (auth.token) navitage("/home");
+    if (auth.token) {
+      if (auth.role === "supervisor") navitage("/supervisor");
+      else {
+        navitage("/home");
+      }
+    }
   }, []);
 
   return (
@@ -37,7 +46,11 @@ export default function Auth() {
       ) : (
         ""
       )}
-      {selectLink.forgotPassword ? <ForgotPassword handleLink={setSelectLink} /> : ""}
+      {selectLink.forgotPassword ? (
+        <ForgotPassword handleLink={setSelectLink} />
+      ) : (
+        ""
+      )}
       {selectLink.signup ? <SignupCard handleLink={setSelectLink} /> : ""}
     </div>
   );

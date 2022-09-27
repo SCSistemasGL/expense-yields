@@ -11,7 +11,7 @@ export default function Home() {
   const dispatch = useDispatch();
   const { registers } = useSelector((state) => state.registers);
   const email = useSelector((state) => state.auth.email);
-  console.log(registers);
+  console.log(email);
   useEffect(() => {
     dispatch(searchRegisterEmail(email));
   }, []);
