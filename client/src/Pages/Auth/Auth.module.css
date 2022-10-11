@@ -1,8 +1,28 @@
 .container{
     display: flex;
     justify-content: center;
-    width: 1354px;
+    background-color: rgb(59, 54, 54);
+   min-height: 520px;
+    gap: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     padding-top: 25px;
-    padding-bottom: 50px;
+    padding-bottom: 25px;
+
+}
+
+.img{
+    width: 60%;
+    border-radius: 1em;
     background-image: url('../../images/maxresdefault.jpg');
 }
+
+.img:hover {filter: grayscale(80%);}
+.auth {
+    width: 40%;
+}
+/* @media (min-width: 600px) {
+    .container {
+      width: 50%;
+    }
+} */

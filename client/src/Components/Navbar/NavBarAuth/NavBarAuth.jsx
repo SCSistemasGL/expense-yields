@@ -27,7 +27,7 @@ export default function NavBarAuth({ handleLink, active, signup }) {
           title="Habilitar Cuenta / Contraseña"
         />
       </div>
-      {signup ? (
+      {/* {signup ? (
         <div
           className={`${style.navItems} ${active.signup ? style.active : ""}`}
         >
@@ -39,7 +39,7 @@ export default function NavBarAuth({ handleLink, active, signup }) {
         </div>
       ) : (
         ""
-      )}
+      )} */}
     </nav>
   );
 }

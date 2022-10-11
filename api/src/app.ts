@@ -1,6 +1,5 @@
 import express from "express";
 import morgan from "morgan";
-// import urlencoded from "url";
 import path from "path";
 import routes from "./router";
 import cors from "cors";

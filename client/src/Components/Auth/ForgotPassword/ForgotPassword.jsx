@@ -3,7 +3,7 @@ import { FaUserCircle } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { newPasswordUser } from "../../../Redux/Actions/Auth";
 
-import style from "./NewTicket.module.css";
+import style from "./ForgotPassword.module.css";
 
 export default function ForotPassword({ handleLink }) {
   const dispatch = useDispatch();
