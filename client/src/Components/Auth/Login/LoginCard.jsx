@@ -61,6 +61,9 @@ export default function LoginCard({ handleAuth, handleLink }) {
   const handleForgotPassword = () => {
     handleLink({forgotPassword:"forgotPassword"})
   };
+    const handleNewPassword = () => {
+    handleLink({newPassword:"newPassword"})
+  };
   return (
     <div className={style.container}>
       <form onSubmit={(e) => handleSubmit(e)}>
@@ -137,6 +140,9 @@ export default function LoginCard({ handleAuth, handleLink }) {
         </div>
         <div className={style.buttonContainer}>
           <button type="submit">Iniciar Sesion</button>
+        </div>
+          <div className={style.buttonContainer}>
+          <button type="submit" onClick={handleNewPassword}>Recuperar Contraseña</button>
         </div>
       </form>
     </div>

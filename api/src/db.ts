@@ -1,15 +1,21 @@
 import { DataSource } from "typeorm";
-import { UserEntity } from "./entity/User.entity";
-import { RegisterEntity } from "./entity/Register.entity";
-import { PriceFuelEntity } from "./entity/PriceFuel.entity";
+import entities from "./entity"
+
+const { DB_HOST,
+  DB_USERNAME,
+  DB_PASSWORD,
+  DB_NAME, } = process.env
 
 export const AppDataSource = new DataSource({
-  type: "postgres",
-  host: "localhost",
-  port: 5432,
-  username: "alex",
-  password: "123456789",
-  database: "rendimiento_gastos",
+  type: "mssql",
+  host: DB_HOST,
+  port: 1433,
+  username: DB_USERNAME,
+  password: DB_PASSWORD,
+  database: DB_NAME,
   synchronize: true,
-  entities: [UserEntity, RegisterEntity, PriceFuelEntity],
+  entities,
+  extra: {
+    trustServerCertificate: true,
+  }
 });

@@ -6,18 +6,13 @@ import {
   PrimaryColumn,
   OneToMany,
   CreateDateColumn,
+  UpdateDateColumn,
 } from "typeorm";
+
 import { RegisterEntity } from "./Register.entity";
 
-export enum UserRole {
-  ADMIN = "admin",
-  SUPERVISOR = "supervisor",
-  USER = "user",
-  TREASURER = "treasurer",
-}
-
-@Entity({name: "users"})
-export class UserEntity extends BaseEntity{
+@Entity({name: "account"})
+export class AccountEntity extends BaseEntity{
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -30,12 +25,9 @@ export class UserEntity extends BaseEntity{
   @PrimaryColumn({ unique: true })
   email: string;
 
-  @Column({
-    type: "enum",
-    enum: UserRole,
-    default: UserRole.USER,
-  })
-  role: UserRole;
+
+  @Column({ default: 'user' })
+  role: string;
 
   @Column({ default: true })
   isActive: boolean;
@@ -45,6 +37,9 @@ export class UserEntity extends BaseEntity{
 
   @CreateDateColumn()
   createdDate: Date;
+
+  @UpdateDateColumn()
+  updateDate: Date;
 
   @OneToMany(() => RegisterEntity, (register) => register.user)
   register: RegisterEntity[];

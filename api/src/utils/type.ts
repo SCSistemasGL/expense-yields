@@ -1,4 +1,4 @@
-import { UserRole } from "../entity/User.entity";
+import { UserRole } from "../const/Enum.const";
 
 export interface IUser {
   id: number;
@@ -6,7 +6,7 @@ export interface IUser {
   lastName: string;
   email: string;
   role: UserRole;
-  isActive: boolean;
+  isActive?: boolean;
   password: string;
 }
 

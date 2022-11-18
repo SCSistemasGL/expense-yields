@@ -1,4 +1,4 @@
-import { UserEntity } from "../entity/User.entity";
+import { AccountEntity } from "../entity/Account.entity";
 import { desCryptedPasswotd, encryptedPassword } from "../utils/Crypted.utils";
 import { IAuthLogin, INewPassword } from "../utils/type";
 import jsw from "jsonwebtoken";
@@ -14,7 +14,7 @@ const { JWT_EXPIRE_TIME } = process.env;
  */
 
 export const authLogin = async (user: IAuthLogin): Promise<object | string> => {
-  const isUser = await UserEntity.findBy({ email: user.email });
+  const isUser = await AccountEntity.findBy({ email: user.email });
   if (isUser[0] === undefined) {
     throw new Error("El usuario no se encuentra registrado");
   } else {
@@ -31,7 +31,7 @@ export const authLogin = async (user: IAuthLogin): Promise<object | string> => {
       return {
         msg: "El usuario esta habilitado",
         email: isUser[0].email,
-        role:isUser[0].role,
+        // role:isUser[0].role,
         token,
       };
     }
@@ -41,20 +41,20 @@ export const authLogin = async (user: IAuthLogin): Promise<object | string> => {
 export const authForgotPassword = async (
   user: INewPassword
 ): Promise<string | object> => {
-  const isUser = await UserEntity.findBy({ email: user.email });
+  const isUser = await AccountEntity.findBy({ email: user.email });
   if (isUser[0] === undefined) {
     throw new Error("El usuario no se encuentra registrado");
   } else {
     if (!user.code) {
       const password = newRandomPass();
-      await UserEntity.update({ email: user.email }, { password });
+      await AccountEntity.update({ email: user.email }, { password });
       sendEmailNewPassword(user.email, password);
       return { msg: "Contraseña cambiada con exitos" };
     } else {
-      const isUser = await UserEntity.findBy({ email: user.email });
+      const isUser = await AccountEntity.findBy({ email: user.email });
       if (isUser[0].password === user.code) {
         const isPassword = encryptedPassword(user.password);
-        await UserEntity.update(
+        await AccountEntity.update(
           { email: user.email },
           { password: isPassword }
         );

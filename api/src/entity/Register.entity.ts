@@ -16,7 +16,7 @@ export enum TypeTrasport {
   MOTO = "moto",
 }
 
-import { UserEntity } from "./User.entity";
+import { AccountEntity } from "./Account.entity";
 import { PriceFuelEntity } from "./PriceFuel.entity";
 
 @Entity({ name: "registers" })
@@ -94,24 +94,24 @@ export class RegisterEntity extends BaseEntity {
   @Column({ type: "real", nullable: true })
   totalSpent: number;
 
-  @Column({
-    name: "imageData",
-    type: "bytea",
-    nullable: true,
-  })
-  imageData: Buffer;
+  // @Column({
+  //   name: "imageData",
+  //   type: "bytea",
+  //   nullable: true,
+  // })
+  // imageData: Buffer;
 
   @CreateDateColumn()
   createdDate: Date;
 
   @UpdateDateColumn()
-  supervisorDate: Date;
+  updateDate: Date;
 
   @Column({ default: "pendiente" })
   status: string;
 
-  @ManyToOne(() => UserEntity, (user) => user.register)
-  user: UserEntity;
+  @ManyToOne(() => AccountEntity, (user) => user.register)
+  user: AccountEntity;
 
   @ManyToOne(() => PriceFuelEntity, (price) => price.register)
   pricefuel: PriceFuelEntity;

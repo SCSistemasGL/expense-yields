@@ -16,6 +16,9 @@ export default function Auth() {
 
   const [selectLink, setSelectLink] = useState({ login: "login" });
 
+
+  console.log(window.innerWidth )
+
   const handleAuth = () => {
     console.log(auth)
     if (auth.role === "supervisor") navitage("/supervisor");
@@ -35,7 +38,9 @@ export default function Auth() {
 
   return (
     <div className={styles.container}>
-      <NavBarAuth handleLink={setSelectLink} active={selectLink} signup />
+   
+    <div className={styles.auth}>
+      {/* <NavBarAuth handleLink={setSelectLink} active={selectLink} signup /> */}
       {selectLink.login ? (
         <LoginCard handleAuth={handleAuth} handleLink={setSelectLink} />
       ) : (
@@ -52,6 +57,8 @@ export default function Auth() {
         ""
       )}
       {selectLink.signup ? <SignupCard handleLink={setSelectLink} /> : ""}
+    </div>
+    <div className={styles.img}></div>
     </div>
   );
 }

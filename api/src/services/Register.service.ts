@@ -1,5 +1,5 @@
 import { RegisterEntity } from "../entity/Register.entity";
-import { UserEntity } from "../entity/User.entity";
+import { UserEntity } from "../entity/Account.entity";
 import { IRegister } from "../utils/type";
 
 export const createNewRegisterUser = async (
@@ -32,7 +32,7 @@ export const createNewRegisterUser = async (
     newRegister.tip = register.tip;
     newRegister.totalSpent = register.totalSpent;
     newRegister.user = isUser[0];
-    newRegister.imageData = register.image;
+    // newRegister.imageData = register.image;
     await newRegister.save();
     return { msg: "Registo creado con exitos!" };
   }
@@ -50,7 +50,6 @@ export const searchRegister = async (
       where: { email },
       relations: { register: true },
     });
-    console.log(isUser);
 
     if (!isUser[0]) {
       throw new Error("El usuario no existe, debe registarse!");
@@ -61,13 +60,13 @@ export const searchRegister = async (
         );
       } else {
         const imgRegister = isUser[0].register;
-        const newImgRegister = imgRegister.map((e) => {
-          if (e.imageData) {
-            e.imageData.toString("base64");
-          }
-        });
+        // const newImgRegister = imgRegister.map((e) => {
+        //   if (e.imageData) {
+        //     e.imageData.toString("base64");
+        //   }
+        // });
 
-        return { register: isUser[0].register, img: newImgRegister };
+        return { register: isUser[0].register, };
       }
     }
   }
