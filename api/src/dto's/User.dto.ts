@@ -2,7 +2,7 @@
  * DTO's that in update the chat
  */
 
-import { UserRole } from "../entity/User.entity";
+import { UserRole } from "../const/Enum.const";
 import { parseString } from "../utils/Methods.utils";
 import { IUserCreate, IUserUpdate } from "../utils/type";
 

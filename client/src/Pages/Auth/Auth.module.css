@@ -8,6 +8,7 @@
     padding-right: 1rem;
     padding-top: 25px;
     padding-bottom: 25px;
+    
 
 }
 
@@ -15,14 +16,17 @@
     width: 60%;
     border-radius: 1em;
     background-image: url('../../images/maxresdefault.jpg');
+    height: 520px;
 }
 
 .img:hover {filter: grayscale(80%);}
 .auth {
     width: 40%;
 }
-/* @media (min-width: 600px) {
+@media ( min-height: 720px) {
     .container {
-      width: 50%;
+        height: 620px;
+        background-color: rgb(59, 54, 54);
+      
     }
-} */
+}
