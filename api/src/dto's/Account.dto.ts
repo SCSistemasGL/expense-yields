@@ -40,3 +40,20 @@ export class updateAccountBody{
   @IsEmail()
   email: string;
 }
+
+export class accountNotPasswordBody {
+  @IsString()
+  @IsNotEmpty()
+  firstName: string;
+
+  @IsString()
+  @IsNotEmpty()
+  lastName: string;
+
+  @IsNotEmpty()
+  @IsEmail()
+  email: string;
+
+  @IsEnum(UserRole)
+  role: UserRole;
+}

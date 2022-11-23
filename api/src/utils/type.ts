@@ -59,7 +59,4 @@ export interface IRegister {
   email: string;
 }
 
-export interface IPriceFuel {
-  nameProvince: string;
-  priceKm: number;
-}
+

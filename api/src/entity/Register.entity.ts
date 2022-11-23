@@ -94,13 +94,6 @@ export class RegisterEntity extends BaseEntity {
   @Column({ type: "real", nullable: true })
   totalSpent: number;
 
-  // @Column({
-  //   name: "imageData",
-  //   type: "bytea",
-  //   nullable: true,
-  // })
-  // imageData: Buffer;
-
   @CreateDateColumn()
   createdDate: Date;
 

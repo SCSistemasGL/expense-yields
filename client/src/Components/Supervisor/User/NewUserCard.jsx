@@ -5,10 +5,10 @@ import Select from "react-select";
 import { signup } from "../../../Redux/Actions/Auth";
 import { validateSignup } from "../../../Utils/validate";
 
-import style from "./SignupCard.module.css";
+import style from "./NewUserCard.module.css";
 import optionSelectRol from "../../../Utils/optionRol";
 
-export default function SigupCard({ handleLink, handleAuth }) {
+export default function NewUserCard({ handleLink, handleAuth }) {
   const dispatch = useDispatch();
   const [keyOn, setKeyOn] = useState(false);
 
@@ -22,7 +22,6 @@ export default function SigupCard({ handleLink, handleAuth }) {
     firstName: "",
     lastName: "",
     email: "",
-    password: "",
     role: "",
     code: "",
   });
@@ -31,7 +30,6 @@ export default function SigupCard({ handleLink, handleAuth }) {
     firstName: "",
     lastName: "",
     email: "",
-    password: "",
     role: "",
   });
 
@@ -48,15 +46,14 @@ export default function SigupCard({ handleLink, handleAuth }) {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { firstName, email, password, lastName, role } =
+    const { firstName, email, lastName, role } =
       validateSignup(input);
-    if (email || password || firstName || lastName) {
+    if (email || firstName || lastName) {
       setErrors((old) => ({
         ...old,
         firstName: firstName ? firstName : "",
         lastName: lastName ? lastName : "",
         email: email ? email : "",
-        password: password ? password : "",
         role: role ? role : "",
       }));
     } else {
@@ -161,29 +158,6 @@ export default function SigupCard({ handleLink, handleAuth }) {
             ""
           )}
         </div>
-        <label>
-          <h5>Contraseña:</h5>
-          <div
-            className={`${style.inputGroupPass} ${
-              errors.password ? style.error : ""
-            } `}
-          >
-            <FaKey />
-            <input
-              type={keyOn ? "text" : "password"}
-              value={input.password}
-              name="password"
-              onChange={(e) => handleChange(e)}
-              placeholder="Contraseña..."
-            />
-            <FaEye
-              className={style.keyEye}
-              onClick={(e) => {
-                setKeyOn((old) => !old);
-              }}
-            />
-          </div>
-        </label>
         <div>
           {errors.password ? (
             <span className={style.errorSpan}>{errors.password}</span>

@@ -1,11 +1,11 @@
 import { RegisterEntity } from "../entity/Register.entity";
-import { UserEntity } from "../entity/Account.entity";
+import { AccountEntity } from "../entity/Account.entity";
 import { IRegister } from "../utils/type";
 
 export const createNewRegisterUser = async (
   register: IRegister
 ): Promise<object> => {
-  const isUser = await UserEntity.find({ where: { email: register.email } });
+  const isUser = await AccountEntity.find({ where: { email: register.email } });
   if (!isUser[0]) {
     throw new Error("No existe usuario con ese email");
   } else {
@@ -46,7 +46,7 @@ export const searchRegister = async (
     const isRegister = await RegisterEntity.find({ relations: { user: true } });
     return isRegister;
   } else {
-    const isUser = await UserEntity.find({
+    const isUser = await AccountEntity.find({
       where: { email },
       relations: { register: true },
     });

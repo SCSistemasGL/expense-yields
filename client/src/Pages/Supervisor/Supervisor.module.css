@@ -1,6 +1,23 @@
 .container {
     display: flex;
     justify-content: center;
-    background: black;
+    /* background: rgb(51, 49, 49); */
 }
 
+.newPage {
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    position: absolute;
+    z-index: 10;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    min-width: 10rem;
+    min-height: 20rem;
+    margin: 0em auto 2rem auto;
+    background-color: #000a;
+    overflow: auto;
+    padding-top: 4.5rem;
+    padding-bottom: 10rem;
+}

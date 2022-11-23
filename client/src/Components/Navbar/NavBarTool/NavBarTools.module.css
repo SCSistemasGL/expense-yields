@@ -1,6 +1,6 @@
 .nav {
     position: absolute;
-    width: 5rem;
+    width: 10rem;
     height: auto;
     padding: 1rem 0;
     gap: 2rem;
@@ -8,7 +8,7 @@
     align-items: center;
     display: flex;
     flex-direction: column;
-    left: 3rem;
+    left: 2rem;
     top: 5rem;
     border: solid black 1px;
     border-radius: 5px;
@@ -46,13 +46,19 @@
     background-color: rgb(255, 20, 150)
 }
 
+.navName {
+    cursor: pointer;
+}
+
 .icon {
     width: 1.5em;
     height: 1.5em;
     cursor: pointer;
+    margin-left: 0.5rem;
+
 }
 
-.icon:hover {
+.navName:hover {
     color: brown
 }
 

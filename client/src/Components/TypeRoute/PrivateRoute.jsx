@@ -13,11 +13,11 @@ function PrivateRoute() {
     if (new Date(Date.now()) > new Date(expires)) {
       dispatch(logout());
       alert("Session expired");
-      return navigate("/login");
+      return navigate("/auth");
     }
   }
 
-  return (isAuth ? <Outlet /> : <Navigate to="/login" />)
+  return (isAuth ? <Outlet /> : <Navigate to="/auth" />)
 }
 
 export default PrivateRoute;

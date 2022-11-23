@@ -2,8 +2,10 @@ import { toCreateUser, toUpdateUser } from "../dto's/User.dto";
 import { AccountEntity } from "../entity/Account.entity";
 import { IUser, IUserUpdate } from "../utils/type";
 import { encryptedPassword } from "../utils/Crypted.utils";
-import { accountBody, updateAccountBody } from "../dto's/Account.dto";
+import { accountBody, accountNotPasswordBody, updateAccountBody } from "../dto's/Account.dto";
 import { HttpError, NotFoundError } from "routing-controllers";
+import { newRandomPassword } from "../utils/RandomPassword.utils";
+import sendEmailNewPassword from "../utils/InfoEmail.utils";
 
 /**
  * 
@@ -77,3 +79,23 @@ export const notActiveAccount = async (
     }
   }
 };
+
+export const newAccountNotPassword = async (account: accountNotPasswordBody) => { 
+  const isUser = await AccountEntity.findOneBy({ email: account.email });
+  if (isUser) {
+    throw new HttpError(401, 'Ya existe una cuenta con este email.')
+  } else { 
+    const { email, firstName, lastName, role } = account;
+    const passwordRandom = newRandomPassword()
+    const newUser = new AccountEntity();
+    newUser.email = email;
+    newUser.firstName = firstName.toLowerCase();
+    newUser.lastName = lastName.toLowerCase();
+    newUser.role = role;
+    newUser.password = passwordRandom;
+    await newUser.save();
+    sendEmailNewPassword(account.email, passwordRandom);
+  
+    return {msg:'Cuenta creada con éxito!'}
+  }
+}

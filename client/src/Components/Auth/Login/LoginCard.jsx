@@ -18,8 +18,8 @@ export default function LoginCard({ handleAuth, handleLink }) {
     code: "",
   });
   const [input, setInput] = useState({
-    email: "",
-    password: "",
+    email: "alex@gmail.com",
+    password: "123456",
   });
 
   const handleChange = (e) => {
@@ -40,11 +40,11 @@ export default function LoginCard({ handleAuth, handleLink }) {
         password: password ? password : "",
       }));
       email
-        ? setInput({ email: "", password: "" })
-        : setInput((old) => ({
-            ...old,
-            password: "",
-          }));
+      ? setInput({ email: "", password: "" })
+      : setInput((old) => ({
+        ...old,
+        password: "",
+      }));
     } else {
       const code = await dispatch(login(input));
       if (!code) {

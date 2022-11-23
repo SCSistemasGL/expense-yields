@@ -1,0 +1,126 @@
+.container * {
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 25em;
+  /* height: 100rem; */
+  max-width: 25em;
+  padding: 1em 1.5em;
+  background-color: #fff;
+  border-radius: 1em;
+  box-shadow: 0 0.25em 0.5em #0005;
+  resize: none;
+  border: none;
+  margin-bottom: 16rem;
+  /* justify-content: center; */
+  /* text-align: center; */
+}
+
+
+.submit {
+  border: none;
+  border: 2px solid #aaa;
+  margin: 1em 0 0 0;
+  padding: 1em;
+}
+
+.inputGroup {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  padding: 0 0 0 1em;
+  border-radius: 4px;
+  overflow: hidden;
+  /* margin-top: 0; */
+  margin-bottom: 2rem;
+  width: 40%;
+  margin-left: 10rem;
+  margin-top: 0.5rem;
+}
+
+.inputGroup input {
+  font-family: "Roboto";
+  padding: 0.75em;
+  border: none;
+  /* width: 100%; */
+  font-size: 0.9rem;
+  border: none;
+  resize: none;
+  outline: 0;
+}
+
+.inputGroup :focus input {
+  border: none;
+  font-family: "Roboto";
+}
+
+.inputGroup:focus-within {
+  border: 2px solid hsl(226deg, 100%, 70%);
+  /* width: 10rem; */
+}
+
+.inputGroup:focus-within.error {
+  color: #f33;
+  border-bottom: 2px solid red;
+}
+
+.error {
+  margin-top: 0.2rem;
+  color: #f33;
+  border-bottom: 2px solid red;
+}
+
+form button[type="submit"] {
+  border-radius: 5em;
+  /* width: 25em; */
+  height: 2.5rem;
+  border: none;
+  background-color: hsl(226deg, 100%, 70%);
+  width: 100%;
+  /* background: linear-gradient(90deg, #668aff 0%, #003cff 50%, blue 100%); */
+  transition: all 0.3s ease-in-out;
+  color: white;
+  cursor: pointer;
+}
+
+form button[type="submit"]:hover {
+  color: black;
+  outline: 2px solid #1e1e1e !important;
+
+}
+
+form h1 {
+  display: flex;
+  justify-content: center;
+}
+
+form h2 {
+  margin-left: 1rem;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1e1e1e;
+  border-bottom: 1px solid #1e1e1e;
+}
+
+.errorSpan {
+  margin-top: 0.3rem;
+  color: #f33;
+  margin-left: 2.7rem;
+  font-size: .8rem;
+
+}
+
+.chart {
+  font-size: .8rem;
+  margin-left: 2.7rem;
+
+}
