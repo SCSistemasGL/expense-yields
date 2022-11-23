@@ -54,12 +54,6 @@ const validateSignup = ({
       return { email: "Error, esto no es un email" };
     }
   }
-
-  if (!password) return { password: "Debe proporcionar una contraseña" };
-  if (password.length < 6)
-    return {
-      password: "La contraseña debe tener mas de 6 caracteres",
-    };
   if (!role) return { role: "Debe seleccionar un rol" };
 
   return {};

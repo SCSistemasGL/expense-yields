@@ -1,0 +1,158 @@
+.container {
+    margin-top: 2rem;
+    background-color: beige;
+    border-top: 1px solid black;
+    width: 820px;
+    border: 1px solid black;
+    /* height: 10%; */
+    border-radius: 1rem;
+    margin-bottom: 50px;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    position: relative;
+}
+
+.title h2 {
+    margin-left: 1rem;
+}
+
+.btn {
+    border-radius: .5em;
+    border: none;
+    width: 12rem;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    /* margin-top: 1rem; */
+    background-color: black;
+    /* background: linear-gradient(90deg, #668aff 0%, #003cff 50%, blue 100%); */
+    transition: all 0.3s ease-in-out;
+    color: white;
+    cursor: pointer;
+    margin-top: 1rem;
+    margin-left: 20rem;
+    position: relative;
+    margin-right: rem;
+}
+
+.btn:hover {
+    background-color:rgb(126, 188, 212);
+    /* color: hsl(226deg, 100%, 70%); */
+    /* background-color: hsl(226deg, 100%, 70%); */
+    color: white;
+    outline: 1px solid white !important;
+}
+
+.icon {
+    width: 1.5em;
+    height: 1.5em;
+    cursor: pointer;
+    /* color: #1e1e1e; */
+}
+
+.icon:hover {
+    color: hsl(226deg, 100%, 70%);
+
+}
+
+.headerTable {
+    display: flex;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    width: 817px;
+    height: 2rem;
+    align-items: center;
+    background-color: #f8f9fa;
+}
+
+.titleId {
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    padding-left: 1rem;
+    margin-right: 1rem;
+    border-right: 1px solid black;
+}
+
+.titleName {
+    border-right: 1px solid black;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    padding-left: 1rem;
+    padding-right: 2rem;
+}
+
+.titlePrice {
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    border-right: 1px solid black;
+}
+
+.titleDate {
+    width: 300px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.cardContainer {
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    border-bottom: 1px #adb5bd solid;
+}
+
+.cardContainer:hover {
+    cursor: pointer;
+    background-color: rgb(126, 188, 212);
+}
+
+.idUser {
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    padding-left: 1rem;
+    margin-right: 1rem;
+}
+
+.name {
+    width: 200px;
+    display: flex;
+    margin-left: 1rem;
+    font-size: large;
+    text-align: center;
+    justify-content: center;
+}
+
+.price {
+    width: 150px;
+    display: flex;
+    margin-left: 1rem;
+    margin-right: 3rem;
+    font-size: large;
+    justify-content: center;
+}
+
+.date {
+    width: 200px;
+    display: flex;
+    margin-left: 1rem;
+    margin-right: 3rem;
+    font-size: large;
+    justify-content: center;
+}
+
+.containerPagination {
+    position: relative;
+    bottom: .2rem;
+    padding-top: 1rem;
+    border-top: 1px #adb5bd solid;
+}

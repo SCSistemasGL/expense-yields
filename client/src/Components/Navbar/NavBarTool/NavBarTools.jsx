@@ -18,82 +18,64 @@ export default function NavBarTools({ handleLink, active }) {
 
   return (
     <nav className={style.nav}>
-      <div
-        className={`${style.navItems} ${
-          active.businessAdd ? style.active : ""
-        }`}
-      >
-        <MdAddBusiness
-          onClick={() => handleLink({ businessAdd: "businessAdd" })}
+            
+        <div>
+        <div
+          className={`${style.navItems}  ${style.navName } ${active.provincePriceAdd ? style.active : ""}`}
+           onClick={() => handleLink({ provincePriceAdd: "provincePriceAdd" })}>
+          COMBUSTIBLE 
+          <MdAddBusiness
           className={style.icon}
-          title="Agregar Empresas"
+          title="Agregar precio por kilometro"
         />
+        </div>     
       </div>
-
-      <div
-        className={`${style.navItems} ${
-          active.businessEdit ? style.active : ""
-        }`}
-      >
-        <IoBusiness
-          onClick={() => handleLink({ businessEdit: "businessEdit" })}
-          className={style.icon}
-          title="Editar Empresa"
-        />
-      </div>
-      <div
-        className={`${style.navItems} ${
-          active.departament ? style.active : ""
-        }`}
-      >
-        <IoFileTrayStackedOutline
-          onClick={() => handleLink({ departament: "departament" })}
-          className={style.icon}
-          title="Agregar Departamento"
-        />
-      </div>
-      <div
-        className={`${style.navItems} ${active.technicalAdd ? style.active : ""}`}
-      >
-        <BsTools
-          onClick={() => handleLink({ technicalAdd: "technicalAdd" })}
-          className={style.icon}
-          title="Agregar Técnico"
-        />
-      </div>
-      <div
-        className={`${style.navItems} ${active.technicalEdit ? style.active : ""}`}
-      >
-        <FiTool
-          onClick={() => handleLink({ technicalEdit: "technicalEdit" })}
-          className={style.icon}
-          title="Editas Técnico"
-        />
-      </div>
-
-      
-      <div className={`${style.navItems} ${active.userAdd ? style.active : ""}`}>
-        <FaUserPlus
-          onClick={() => handleLink({ userAdd: "userAdd" })}
+      <div>
+        <div
+          className={`${style.navItems}  ${style.navName } ${active.userAdd ? style.active : ""}`}
+          onClick={() => handleLink({ userAdd: "userAdd" })}>
+           USUSARIOS  
+          <FaUserPlus
           className={style.icon}
           title="Agregar Usuario"
         />
+        </div>
       </div>
-      <div
-        className={`${style.navItems} ${active.userEdit ? style.active : ""}`}
-      >
-        <FaUserEdit
-          onClick={() => handleLink({ userEdit: "userEdit" })}
+      
+
+      <div>
+        <div
+          className={`${style.navItems}  ${style.navName } ${active.new1 ? style.active : ""}`}
+          onClick={() => handleLink({ new1: "new1" })}>
+          NUEVO ITEM 
+          <IoFileTrayStackedOutline
           className={style.icon}
-          title="Editar Usuario"
+          title="Nuevo Item"
         />
+        </div>     
       </div>
-      <div className={`${style.navItems} ${active.ticket ? style.active : ""}`}>
-        <IoTicketOutline
-          onClick={() => handleLink({ ticket: "ticket" })}
+     
+      <div>
+        <div
+          className={`${style.navItems}  ${style.navName } ${active.new2 ? style.active : ""}`}
+          onClick={() => handleLink({ new2: "new2" })}>
+          NUEVO ITEM 
+          <IoFileTrayStackedOutline
           className={style.icon}
-          title="Ticket"
+          title="Nuevo Item"
         />
+        </div>     
+      </div>
+      <div>
+        <div
+          className={`${style.navItems}  ${style.navName } ${active.new3 ? style.active : ""}`}
+          onClick={() => handleLink({ new3: "new3" })}>
+          NUEVO ITEM 
+          <IoFileTrayStackedOutline
+          className={style.icon}
+          title="Nuevo Item"
+        />
+        </div>     
       </div>
     </nav>
   );

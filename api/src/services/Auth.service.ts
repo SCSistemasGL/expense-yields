@@ -4,6 +4,9 @@ import { IAuthLogin, INewPassword } from "../utils/type";
 import jsw from "jsonwebtoken";
 import dotenv from "dotenv";
 import sendEmailNewPassword from "../utils/InfoEmail.utils";
+import { HttpError } from "routing-controllers";
+import { loginBody } from "../dto's/Auth.dto";
+import { newRandomPassword } from "../utils/RandomPassword.utils";
 
 dotenv.config();
 const { JWT_EXPIRE_TIME } = process.env;
@@ -13,17 +16,17 @@ const { JWT_EXPIRE_TIME } = process.env;
  * @returns This function compares the user and returns an object with the role and the email with its token.
  */
 
-export const authLogin = async (user: IAuthLogin): Promise<object | string> => {
+export const authLogin = async (user: loginBody) => {
   const isUser = await AccountEntity.findBy({ email: user.email });
   if (isUser[0] === undefined) {
-    throw new Error("El usuario no se encuentra registrado");
+    throw new HttpError(404, "El usuario no se encuentra registrado");
   } else {
     const isPassword = await desCryptedPasswotd(
       user.password,
       isUser[0].password
     );
     if (!isPassword) {
-      throw new Error("La contraseña o el mail es incorrecto!");
+      throw new HttpError(401, "La contraseña o el mail es incorrecto!");
     } else {
       const token = jsw.sign({ user: isUser[0] }, "secretKey", {
         expiresIn: JWT_EXPIRE_TIME,
@@ -40,13 +43,13 @@ export const authLogin = async (user: IAuthLogin): Promise<object | string> => {
 
 export const authForgotPassword = async (
   user: INewPassword
-): Promise<string | object> => {
+) => {
   const isUser = await AccountEntity.findBy({ email: user.email });
   if (isUser[0] === undefined) {
     throw new Error("El usuario no se encuentra registrado");
   } else {
     if (!user.code) {
-      const password = newRandomPass();
+      const password = newRandomPassword();
       await AccountEntity.update({ email: user.email }, { password });
       sendEmailNewPassword(user.email, password);
       return { msg: "Contraseña cambiada con exitos" };
@@ -66,14 +69,4 @@ export const authForgotPassword = async (
   }
 };
 
-const newRandomPass = () => {
-  var password = "";
-  var str =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + "abcdefghijklmnopqrstuvwxyz0123456789";
-  for (let i = 1; i <= 8; i++) {
-    var char = Math.floor(Math.random() * str.length + 1);
-    password += str.charAt(char);
-  }
 
-  return password;
-};

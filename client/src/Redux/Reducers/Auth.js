@@ -7,6 +7,7 @@ const initialState = cookie.get("admin") || {};
 export default function root(state = initialState, action) {
   switch (action.type) {
     case LOGIN:
+      console.log(action.payload)
       saveLocal("admin", action.payload.data);
       cookie.set("admin", action.payload.data);
       return cookie.get("admin");

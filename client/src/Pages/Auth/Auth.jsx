@@ -8,7 +8,7 @@ import NavBarAuth from "../../Components/Navbar/NavBarAuth/NavBarAuth";
 import LoginCard from "../../Components/Auth/Login/LoginCard";
 import NewPasswordCard from "../../Components/Auth/NewPassword/NewPasswordCard";
 import ForgotPassword from "../../Components/Auth/ForgotPassword/ForgotPassword";
-import SignupCard from "../../Components/Auth/Signup/SignupCard";
+
 
 export default function Auth() {
   const auth = useSelector((state) => state.auth);
@@ -16,8 +16,6 @@ export default function Auth() {
 
   const [selectLink, setSelectLink] = useState({ login: "login" });
 
-
-  console.log(window.innerWidth )
 
   const handleAuth = () => {
     console.log(auth)
@@ -56,7 +54,6 @@ export default function Auth() {
       ) : (
         ""
       )}
-      {selectLink.signup ? <SignupCard handleLink={setSelectLink} /> : ""}
     </div>
     <div className={styles.img}></div>
     </div>
