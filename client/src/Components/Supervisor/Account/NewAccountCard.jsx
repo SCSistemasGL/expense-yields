@@ -5,10 +5,11 @@ import Select from "react-select";
 import { signup } from "../../../Redux/Actions/Auth";
 import { validateSignup } from "../../../Utils/validate";
 
-import style from "./NewUserCard.module.css";
+import style from "./NewAccountCard.module.css";
 import optionSelectRol from "../../../Utils/optionRol";
+import { newAccountNotPassword } from "../../../Redux/Actions/Account";
 
-export default function NewUserCard({ handleLink, handleAuth }) {
+export default function NewAccountCard({ handleLink, handleAuth }) {
   const dispatch = useDispatch();
   const [keyOn, setKeyOn] = useState(false);
 
@@ -59,7 +60,7 @@ export default function NewUserCard({ handleLink, handleAuth }) {
     } else {
       var conf = window.confirm("Esta seguro que quiere crear el usuario?");
       if (conf) {
-        const code = await dispatch(signup(input));
+        const code = await dispatch(newAccountNotPassword(input));
         if (!code) {
           alert("Usuario creado con éxito!");
           handleLink({ login: "login" });

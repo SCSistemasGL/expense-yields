@@ -42,14 +42,4 @@ export function logout() {
   };
 }
 
-export function newPasswordUser(data) {
-  return async (dispatch) => {
-    try {
-      const response = await axios.put(URL_FORGOT_PASSWORD, data);
-      dispatch({ type: FORGOT_PASSWORD, payload: response });
-    } catch (e) {
-      console.log(e.response.data);
-      return e.response.data;
-    }
-  };
-}
+

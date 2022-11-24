@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { useDispatch } from "react-redux";
+import { forgotPasswordAccount } from "../../../Redux/Actions/Account";
 import { newPasswordUser } from "../../../Redux/Actions/Auth";
 
-import style from "./ForgotPassword.module.css";
+import style from "./ForgotPasswordAccount.module.css";
 
-export default function ForotPassword({ handleLink }) {
+export default function ForgotPasswordAccount({ handleLink }) {
   const dispatch = useDispatch();
 
   const [errors, setErrors] = useState({
@@ -26,7 +27,7 @@ export default function ForotPassword({ handleLink }) {
     e.preventDefault();
     var conf = window.confirm("Seguro que quieres hacer esta accion??");
     if (conf) {
-      await dispatch(newPasswordUser(input));
+      await dispatch(forgotPasswordAccount(input));
       alert("Se envio el codigo para recuperar la contraseña al email!");
       handleLink({ login: "login" });
     } else {

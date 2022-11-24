@@ -5,7 +5,7 @@ import jsw from "jsonwebtoken";
 import dotenv from "dotenv";
 import sendEmailNewPassword from "../utils/InfoEmail.utils";
 import { HttpError } from "routing-controllers";
-import { loginBody } from "../dto's/Auth.dto";
+import { forgotPasswordBody, loginBody } from "../dto's/Auth.dto";
 import { newRandomPassword } from "../utils/RandomPassword.utils";
 
 dotenv.config();
@@ -42,30 +42,16 @@ export const authLogin = async (user: loginBody) => {
 };
 
 export const authForgotPassword = async (
-  user: INewPassword
+  account: forgotPasswordBody
 ) => {
-  const isUser = await AccountEntity.findBy({ email: user.email });
+  const isUser = await AccountEntity.findBy({ email: account.email });
   if (isUser[0] === undefined) {
-    throw new Error("El usuario no se encuentra registrado");
+    throw new HttpError(401, "El usuario no se encuentra registrado");
   } else {
-    if (!user.code) {
-      const password = newRandomPassword();
-      await AccountEntity.update({ email: user.email }, { password });
-      sendEmailNewPassword(user.email, password);
-      return { msg: "Contraseña cambiada con exitos" };
-    } else {
-      const isUser = await AccountEntity.findBy({ email: user.email });
-      if (isUser[0].password === user.code) {
-        const isPassword = encryptedPassword(user.password);
-        await AccountEntity.update(
-          { email: user.email },
-          { password: isPassword }
-        );
-        return { msg: "Contraseña cambiada con exitos" };
-      } else {
-        throw new Error("Error, el codigo o el email no es el correcto");
-      }
-    }
+    const password = newRandomPassword();
+    await AccountEntity.update({ email: account.email }, { password });
+    sendEmailNewPassword(account.email, password);
+    return { msg: "Contraseña cambiada con exitos" };
   }
 };
 

@@ -6,10 +6,11 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 import { validateLogin } from "../../../Utils/validate";
 
-import style from "./NewPasswordCard.module.css";
+import style from "./EnableAccountCard.module.css";
 import { newPasswordUser } from "../../../Redux/Actions/Auth";
+import { enableAccount, forgotPasswordAccount } from "../../../Redux/Actions/Account";
 
-export default function NewPasswordCard({ handleLink }) {
+export default function EnableAccountCard({ handleLink }) {
   const dispatch = useDispatch();
   const [keyOn, setKeyOn] = useState(false);
 
@@ -50,7 +51,7 @@ export default function NewPasswordCard({ handleLink }) {
     } else {
       var conf = window.confirm("Seguro que quieres hacer esta accion??");
       if (conf) {
-      const codeRes = await dispatch(newPasswordUser(input));
+      const codeRes = await dispatch(enableAccount(input));
       if (!codeRes) {
         alert("Cuenta habilitada!");
         handleLink({ login: "login" });
@@ -70,7 +71,7 @@ export default function NewPasswordCard({ handleLink }) {
   return (
     <div className={style.container}>
       <form>
-        <h1>- NUEVA CONTRASEÑA -</h1>
+        <h1>- HABILITAR CUENTA -</h1>
         <label>
           <h3>Email</h3>
           <div

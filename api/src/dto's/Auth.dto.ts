@@ -9,3 +9,9 @@ export class loginBody {
   @IsNotEmpty()
   password: string;
 }
+
+export class forgotPasswordBody {
+  @IsNotEmpty()
+  @IsEmail()
+  email: string;
+}

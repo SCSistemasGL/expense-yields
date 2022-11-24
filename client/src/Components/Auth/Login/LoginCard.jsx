@@ -18,8 +18,8 @@ export default function LoginCard({ handleAuth, handleLink }) {
     code: "",
   });
   const [input, setInput] = useState({
-    email: "alex@gmail.com",
-    password: "123456",
+    email: "",
+    password: "",
   });
 
   const handleChange = (e) => {
@@ -58,11 +58,12 @@ export default function LoginCard({ handleAuth, handleLink }) {
     }
   };
 
-  const handleForgotPassword = () => {
-    handleLink({forgotPassword:"forgotPassword"})
+  const handleForgotPasswordAccount = () => {
+    handleLink({forgotPasswordAccount:"forgotPasswordAccount"})
   };
-    const handleNewPassword = () => {
-    handleLink({newPassword:"newPassword"})
+
+  const handleEnableAccount = () => {
+    handleLink({enableAccount:"enableAccount"})
   };
   return (
     <div className={style.container}>
@@ -119,7 +120,7 @@ export default function LoginCard({ handleAuth, handleLink }) {
         <button
           className={style.btnSimple}
           onClick={() => {
-            handleForgotPassword();
+            handleForgotPasswordAccount();
           }}
         >
           Olvidaste la contraseña?
@@ -142,7 +143,7 @@ export default function LoginCard({ handleAuth, handleLink }) {
           <button type="submit">Iniciar Sesion</button>
         </div>
           <div className={style.buttonContainer}>
-          <button type="submit" onClick={handleNewPassword}>Recuperar Contraseña</button>
+          <button type="submit" onClick={handleEnableAccount}>Recuperar Contraseña</button>
         </div>
       </form>
     </div>

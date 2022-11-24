@@ -12,6 +12,7 @@ import { MdAddBusiness, MdAdminPanelSettings } from "react-icons/md";
 import { BsTools } from "react-icons/bs";
 import { FaUserEdit, FaUserPlus } from "react-icons/fa";
 
+import {CgUserList} from "react-icons/cg"
 import { FiTool } from "react-icons/fi";
 
 export default function NavBarTools({ handleLink, active }) {
@@ -19,29 +20,44 @@ export default function NavBarTools({ handleLink, active }) {
   return (
     <nav className={style.nav}>
             
-        <div>
+      <div>
         <div
-          className={`${style.navItems}  ${style.navName } ${active.provincePriceAdd ? style.active : ""}`}
-           onClick={() => handleLink({ provincePriceAdd: "provincePriceAdd" })}>
+          className={`${style.navItems}  ${style.navName } ${active.tableProvincePrice ? style.active : ""}`}
+           title="Lista de Precios" 
+          onClick={() => handleLink({ tableProvincePrice: "tableProvincePrice" })}>
           COMBUSTIBLE 
           <MdAddBusiness
           className={style.icon}
-          title="Agregar precio por kilometro"
+         
         />
         </div>     
       </div>
+
       <div>
         <div
-          className={`${style.navItems}  ${style.navName } ${active.userAdd ? style.active : ""}`}
-          onClick={() => handleLink({ userAdd: "userAdd" })}>
-           USUSARIOS  
+          className={`${style.navItems}  ${style.navName } ${active.accountAdd ? style.active : ""}`}
+           title="Agregar Cuenta"
+          onClick={() => handleLink({ accountAdd: "accountAdd" })}>
+           CUENTA  
           <FaUserPlus
           className={style.icon}
-          title="Agregar Usuario"
+         
         />
         </div>
       </div>
       
+      <div>
+        <div
+          className={`${style.navItems}  ${style.navName } ${active.tableAccounts ? style.active : ""}`}
+          title="Lista de Cuentas"
+          onClick={() => handleLink({ tableAccounts: "tableAccounts" })}>
+          LISTA 
+          <CgUserList
+          className={style.icon}
+          
+        />
+        </div>     
+      </div>
 
       <div>
         <div
