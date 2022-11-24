@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { updateProvincePrice } from "../../../Redux/Actions/Supervisor";
-// import { editTicket } from "../../Redux/Actions/Ticket";
-// import { utilDate } from "../../Utils/tableUtils";
-// import { validateInputFeedback } from "../../Utils/validateTicket";
 
 import style from "./EditProvincePriceCard.module.css";
+
+import { updateProvincePrice } from "../../../Redux/Actions/Supervisor";
 
 export default function EditProvincePriceCard({ data, isUpdatePrice }) {
   const dispatch = useDispatch();

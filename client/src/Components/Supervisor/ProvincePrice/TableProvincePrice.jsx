@@ -1,15 +1,11 @@
 import React from "react";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-
-import { RiAlignJustify, RiArrowUpDownFill } from "react-icons/ri";
-import { Card, CardBody, CardTitle, Table } from "reactstrap";
-import { ImCancelCircle } from "react-icons/im";
+import { useDispatch } from "react-redux";
 import { BiAddToQueue } from "react-icons/bi";
+import { Card, CardBody, CardTitle, Table } from "reactstrap";
 
 import styles from "./TableProvincePrice.module.css";
 
-import PaginationCard from "../../Pagination/PaginationCard";
 import { nameSpace } from "../../../Utils/name.utils";
 import { newDate } from "../../../Utils/date.utils";
 

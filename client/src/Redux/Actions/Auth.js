@@ -1,13 +1,5 @@
 import axios from "axios";
-import {
-  FORGOT_PASSWORD,
-  LOGIN,
-  LOGOUT,
-  SIGNUP,
-  URL_FORGOT_PASSWORD,
-  URL_LOGIN,
-  URL_SIGNUP,
-} from "./ActionsTypes";
+import { LOGIN, LOGOUT, SIGNUP, URL_LOGIN, URL_SIGNUP } from "./ActionsTypes";
 
 export function login(user) {
   return async (dispatch) => {
@@ -41,5 +33,3 @@ export function logout() {
     });
   };
 }
-
-

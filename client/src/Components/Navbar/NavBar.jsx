@@ -1,13 +1,13 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { FiLogOut } from "react-icons/fi";
+import { useDispatch, useSelector } from "react-redux";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
+
+import styles from "./NavBar.module.css";
 
 import Menu from "./Menu/Menu";
 import { logout } from "../../Redux/Actions/Auth";
-
-import styles from "./NavBar.module.css";
 
 export default function Navbar() {
   const dispatch = useDispatch();

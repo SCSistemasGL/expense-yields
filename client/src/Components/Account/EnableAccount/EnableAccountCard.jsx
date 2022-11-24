@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { FaUserCircle, FaKey, FaEye } from "react-icons/fa";
 import { BsFillChatSquareDotsFill } from "react-icons/bs";
-import { useLocation, useNavigate } from "react-router-dom";
+import { FaUserCircle, FaKey, FaEye } from "react-icons/fa";
 
-import { validateLogin } from "../../../Utils/validate";
+
 
 import style from "./EnableAccountCard.module.css";
-import { newPasswordUser } from "../../../Redux/Actions/Auth";
-import { enableAccount, forgotPasswordAccount } from "../../../Redux/Actions/Account";
+
+import { enableAccount } from "../../../Redux/Actions/Account";
+import { validateLogin } from "../../../Utils/validate";
 
 export default function EnableAccountCard({ handleLink }) {
   const dispatch = useDispatch();
@@ -51,19 +51,19 @@ export default function EnableAccountCard({ handleLink }) {
     } else {
       var conf = window.confirm("Seguro que quieres hacer esta accion??");
       if (conf) {
-      const codeRes = await dispatch(enableAccount(input));
-      if (!codeRes) {
-        alert("Cuenta habilitada!");
-        handleLink({ login: "login" });
+        const codeRes = await dispatch(enableAccount(input));
+        if (!codeRes) {
+          alert("Cuenta habilitada!");
+          handleLink({ login: "login" });
+        } else {
+          setErrors((old) => ({
+            ...old,
+            codeRes: codeRes.error,
+          }));
+        }
       } else {
-        setErrors((old) => ({
-          ...old,
-          codeRes: codeRes.error,
-        }));
-      }}else{
-        alert("No se cambio su contraseña")
+        alert("No se cambio su contraseña");
         handleLink({ login: "login" });
-
       }
     }
   };

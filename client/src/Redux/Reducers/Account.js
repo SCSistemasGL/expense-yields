@@ -1,7 +1,7 @@
 import { ACCOUNTS } from "../Actions/ActionsTypes";
 
 const initialState = {
-  accounts: []
+  accounts: [],
 };
 
 export default function root(state = initialState, action) {

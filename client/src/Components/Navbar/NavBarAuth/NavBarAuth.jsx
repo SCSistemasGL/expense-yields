@@ -1,12 +1,10 @@
 import React from "react";
-
-import { AiOutlineUserAdd } from "react-icons/ai";
-import { MdOutlineHowToReg } from "react-icons/md";
 import { FiLogIn } from "react-icons/fi";
+import { MdOutlineHowToReg } from "react-icons/md";
 
 import style from "./NavBarAuth.module.css";
 
-export default function NavBarAuth({ handleLink, active, signup }) {
+export default function NavBarAuth({ handleLink, active }) {
   return (
     <nav className={style.nav}>
       <div className={`${style.navItems} ${active.login ? style.active : ""}`}>
@@ -27,19 +25,6 @@ export default function NavBarAuth({ handleLink, active, signup }) {
           title="Habilitar Cuenta / Contraseña"
         />
       </div>
-      {/* {signup ? (
-        <div
-          className={`${style.navItems} ${active.signup ? style.active : ""}`}
-        >
-          <AiOutlineUserAdd
-            onClick={() => handleLink({ signup: "signup" })}
-            className={style.icon}
-            title="Registrarse"
-          />
-        </div>
-      ) : (
-        ""
-      )} */}
     </nav>
   );
 }

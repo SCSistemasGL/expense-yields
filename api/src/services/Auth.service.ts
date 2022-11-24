@@ -1,12 +1,12 @@
-import { AccountEntity } from "../entity/Account.entity";
-import { desCryptedPasswotd, encryptedPassword } from "../utils/Crypted.utils";
-import { IAuthLogin, INewPassword } from "../utils/type";
-import jsw from "jsonwebtoken";
 import dotenv from "dotenv";
-import sendEmailNewPassword from "../utils/InfoEmail.utils";
+import jsw from "jsonwebtoken";
 import { HttpError } from "routing-controllers";
+
 import { forgotPasswordBody, loginBody } from "../dto's/Auth.dto";
 import { newRandomPassword } from "../utils/RandomPassword.utils";
+import sendEmailNewPassword from "../utils/InfoEmail.utils";
+import { desCryptedPasswotd } from "../utils/Crypted.utils";
+import { AccountEntity } from "../entity/Account.entity";
 
 dotenv.config();
 const { JWT_EXPIRE_TIME } = process.env;

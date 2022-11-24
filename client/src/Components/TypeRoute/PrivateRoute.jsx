@@ -17,7 +17,7 @@ function PrivateRoute() {
     }
   }
 
-  return (isAuth ? <Outlet /> : <Navigate to="/auth" />)
+  return isAuth ? <Outlet /> : <Navigate to="/auth" />;
 }
 
 export default PrivateRoute;
