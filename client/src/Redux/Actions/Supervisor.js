@@ -38,6 +38,7 @@ export function searchProvinceNotPrice() {
 }
 
 export function updateProvincePrice(data) {
+  console.log('===>',data)
   return async (dispatch) => {
     try {
       const response = await axios.put(URL_UPDATE_PROVINCE_PRICE, data);

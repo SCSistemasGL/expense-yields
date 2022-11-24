@@ -15,8 +15,9 @@ import { newDate } from "../../../Utils/date.utils";
 
 export default function TableProvincePrice({
   provinceWithPrice,
-setProvincePrice
-
+  setProvincePrice,
+  setEditProvincePrice,
+  setIsEditProvince,
 }) {
   const dispatch = useDispatch();
 
@@ -25,7 +26,9 @@ setProvincePrice
   const [rowPerPage, setRowPerPage] = useState(20); //Cantidad de registros por pagina
   const indexOfLastRow = currentPage * rowPerPage; //9
   const indexOfFirstRow = indexOfLastRow - rowPerPage; //0--9--18--
-  const currentRow = provinceWithPrice[0]? provinceWithPrice.slice(indexOfFirstRow, indexOfLastRow): [];
+  const currentRow = provinceWithPrice[0]
+    ? provinceWithPrice.slice(indexOfFirstRow, indexOfLastRow)
+    : [];
   const [up, setUp] = useState(false);
 
   const [n, setN] = useState(0);
@@ -36,8 +39,10 @@ setProvincePrice
     setCurrentPage(pageNumber);
   };
 
-
- 
+  const handleEditProvince = (data) => {
+    setEditProvincePrice(data);
+    setIsEditProvince(true);
+  };
 
   return (
     <div className={styles.container}>
@@ -48,7 +53,7 @@ setProvincePrice
             <div
               title="Nuevo Precio"
               className={styles.btn}
-              onClick={()=> setProvincePrice(true)}
+              onClick={() => setProvincePrice(true)}
             >
               <div>AGREGAR</div>
               <BiAddToQueue className={styles.icon} />
@@ -76,24 +81,25 @@ setProvincePrice
               {currentRow[0] ? (
                 currentRow.map((e, index) => (
                   <tr key={index}>
-                    <td className={styles.cardContainer}>
+                    <td
+                      className={styles.cardContainer}
+                      onClick={() => handleEditProvince(e)}
+                    >
                       <td scope="row">
                         <div className={styles.idUser}>{e.id}</div>
                       </td>
                       <td>
-                        <div className={styles.name}>            
-                        {nameSpace(e.nameProvince)}   
-                          </div>                
+                        <div className={styles.name}>
+                          {nameSpace(e.nameProvince)}
+                        </div>
                       </td>
                       <td>
-                        <div className={styles.price}>                     
-                           $ {e.priceKm}                
-                        </div>
+                        <div className={styles.price}>$ {e.priceKm}</div>
                       </td>
 
                       <td>
                         <div className={styles.date}>
-                          <span> {newDate( e.updateDate)}</span>
+                          <span> {newDate(e.updateDate)}</span>
                         </div>
                       </td>
                     </td>
@@ -106,7 +112,6 @@ setProvincePrice
               )}
             </tbody>
             <div className={styles.containerPagination}></div>
-          
           </Table>
         </CardBody>
       </Card>
