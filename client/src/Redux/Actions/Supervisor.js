@@ -1,5 +1,14 @@
-import axios from "axios"
-import { ALL_PROVINCE_PRICE, PROVINCE_NOT_PRICE, PROVINCE_WITH_PRICE, UPDATE_PROVINCE_PRICE, URL_ALL_PROVINCE_PRICE, URL_PROVINCE_NOT_PRICE, URL_PROVINCE_WITH_PRICE, URL_UPDATE_PROVINCE_PRICE } from "./ActionsTypes";
+import axios from "axios";
+import {
+  ALL_PROVINCE_PRICE,
+  PROVINCE_NOT_PRICE,
+  PROVINCE_WITH_PRICE,
+  UPDATE_PROVINCE_PRICE,
+  URL_ALL_PROVINCE_PRICE,
+  URL_PROVINCE_NOT_PRICE,
+  URL_PROVINCE_WITH_PRICE,
+  URL_UPDATE_PROVINCE_PRICE,
+} from "./ActionsTypes";
 
 export function searchAllProvince() {
   return async (dispatch) => {
@@ -38,7 +47,6 @@ export function searchProvinceNotPrice() {
 }
 
 export function updateProvincePrice(data) {
-  console.log('===>',data)
   return async (dispatch) => {
     try {
       const response = await axios.put(URL_UPDATE_PROVINCE_PRICE, data);

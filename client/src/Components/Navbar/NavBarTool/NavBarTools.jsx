@@ -1,19 +1,10 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { FaUserPlus } from "react-icons/fa";
+import { CgUserList } from "react-icons/cg";
+import { MdAddBusiness } from "react-icons/md";
+import { IoFileTrayStackedOutline } from "react-icons/io5";
 
 import style from "./NavBarTools.module.css";
-import {
-  IoBusiness,
-  IoFileTrayStackedOutline,
-  IoTicketOutline,
-} from "react-icons/io5";
-import { AiOutlineUserAdd } from "react-icons/ai";
-import { MdAddBusiness, MdAdminPanelSettings } from "react-icons/md";
-import { BsTools } from "react-icons/bs";
-import { FaUserEdit, FaUserPlus } from "react-icons/fa";
-
-import { CgUserList } from "react-icons/cg";
-import { FiTool } from "react-icons/fi";
 
 export default function NavBarTools({ handleLink, active }) {
   return (

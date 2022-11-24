@@ -1,8 +1,9 @@
 
-import { PriceFuelEntity } from "../entity/PriceFuel.entity";
-import { ProvinceAndPrice } from "../const/ProvinceAndPrice.const";
 import { HttpError } from "routing-controllers";
+
 import { ProvinceAndPriceBody } from "../dto's/ProvinceAndPrice.dto";
+import { ProvinceAndPrice } from "../const/ProvinceAndPrice.const";
+import { PriceFuelEntity } from "../entity/PriceFuel.entity";
 
 
 export const updatePriceFuelKm = async (fuel: ProvinceAndPriceBody) => {

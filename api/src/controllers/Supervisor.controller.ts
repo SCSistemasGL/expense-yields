@@ -1,7 +1,7 @@
-import { Request, Response } from "express";
 import { Body, Get, JsonController, Post, Put } from "routing-controllers";
-import { ProvinceAndPriceBody } from "../dto's/ProvinceAndPrice.dto";
+
 import { allPriceFuelProvince, findeProvinceNotPrice, findProvinceWithPrice, loadNameProvince, updatePriceFuelKm } from "../services/PriceFuel.service";
+import { ProvinceAndPriceBody } from "../dto's/ProvinceAndPrice.dto";
 
 @JsonController('/supervisor')
 export class SupervisorController {

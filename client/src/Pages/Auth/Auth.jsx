@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 import styles from "./Auth.module.css";
 
 //Cards
@@ -16,12 +17,11 @@ export default function Auth() {
 
   const [selectLink, setSelectLink] = useState({ login: "login" });
 
-
   const handleAuth = () => {
     if (auth.role === "supervisor") navitage("/supervisor");
     else {
       navitage("/home");
-    };
+    }
   };
 
   useEffect(() => {
@@ -35,26 +35,25 @@ export default function Auth() {
 
   return (
     <div className={styles.container}>
-   
-    <div className={styles.auth}>
-      {/* <NavBarAuth handleLink={setSelectLink} active={selectLink} signup /> */}
-      {selectLink.login ? (
-        <LoginCard handleAuth={handleAuth} handleLink={setSelectLink} />
-      ) : (
-        ""
-      )}
-      {selectLink.enableAccount ? (
-        <EnableAccountCard handleLink={setSelectLink} />
-      ) : (
-        ""
-      )}
-      {selectLink.forgotPasswordAccount ? (
-        <ForgotPasswordAccount handleLink={setSelectLink} />
-      ) : (
-        ""
-      )}
-    </div>
-    <div className={styles.img}></div>
+      <div className={styles.auth}>
+        {/* <NavBarAuth handleLink={setSelectLink} active={selectLink} signup /> */}
+        {selectLink.login ? (
+          <LoginCard handleAuth={handleAuth} handleLink={setSelectLink} />
+        ) : (
+          ""
+        )}
+        {selectLink.enableAccount ? (
+          <EnableAccountCard handleLink={setSelectLink} />
+        ) : (
+          ""
+        )}
+        {selectLink.forgotPasswordAccount ? (
+          <ForgotPasswordAccount handleLink={setSelectLink} />
+        ) : (
+          ""
+        )}
+      </div>
+      <div className={styles.img}></div>
     </div>
   );
 }

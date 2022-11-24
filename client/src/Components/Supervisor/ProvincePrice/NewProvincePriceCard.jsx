@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from "react";
 import Select from "react-select";
-
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { FaUserCircle } from "react-icons/fa";
 
 import style from "./NewProvincePriceCard.module.css";
-import { selectOptionProvince } from "../../../Utils/select.utils";
+
 import { updateProvincePrice } from "../../../Redux/Actions/Supervisor";
+import { selectOptionProvince } from "../../../Utils/select.utils";
 
 export default function NewProvincePriceCard({ isPrice }) {
   const dispatch = useDispatch();
@@ -82,8 +81,6 @@ export default function NewProvincePriceCard({ isPrice }) {
           <h2>Provincia:</h2>
           <label>
             <Select
-              // className={`${style.wrapper} ${errors.departament ? style.errorSelect : ""
-              // }`}
               onChange={(e) => handleSelectDepartament(e)}
               options={optionProvince}
               placeholder="Provincia..."
@@ -103,7 +100,6 @@ export default function NewProvincePriceCard({ isPrice }) {
                   name="priceKm"
                   onChange={(e) => handleChange(e)}
                   placeholder="Precio por km"
-                  // autoComplete="cc-number"
                 />
               </div>
             </label>

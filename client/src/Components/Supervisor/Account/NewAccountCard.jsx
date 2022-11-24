@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { FaUserCircle, FaKey, FaEye } from "react-icons/fa";
 import Select from "react-select";
-import { signup } from "../../../Redux/Actions/Auth";
+import { useDispatch } from "react-redux";
+import { FaUserCircle} from "react-icons/fa";
+import React, { useEffect, useState } from "react";
+
 import { validateSignup } from "../../../Utils/validate";
 
 import style from "./NewAccountCard.module.css";

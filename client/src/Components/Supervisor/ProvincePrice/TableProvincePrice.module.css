@@ -4,7 +4,6 @@
     border-top: 1px solid black;
     width: 820px;
     border: 1px solid black;
-    /* height: 10%; */
     border-radius: 1rem;
     margin-bottom: 50px;
 }
@@ -30,9 +29,7 @@
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    /* margin-top: 1rem; */
     background-color: black;
-    /* background: linear-gradient(90deg, #668aff 0%, #003cff 50%, blue 100%); */
     transition: all 0.3s ease-in-out;
     color: white;
     cursor: pointer;
@@ -43,9 +40,7 @@
 }
 
 .btn:hover {
-    background-color:rgb(126, 188, 212);
-    /* color: hsl(226deg, 100%, 70%); */
-    /* background-color: hsl(226deg, 100%, 70%); */
+    background-color: rgb(126, 188, 212);
     color: white;
     outline: 1px solid white !important;
 }
@@ -54,12 +49,10 @@
     width: 1.5em;
     height: 1.5em;
     cursor: pointer;
-    /* color: #1e1e1e; */
 }
 
 .icon:hover {
     color: hsl(226deg, 100%, 70%);
-
 }
 
 .headerTable {

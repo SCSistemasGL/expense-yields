@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { FaUserCircle, FaKey, FaEye } from "react-icons/fa";
 
+import style from "./LoginCard.module.css";
+
 import { login } from "../../../Redux/Actions/Auth";
 import { validateLogin } from "../../../Utils/validate";
-
-import style from "./LoginCard.module.css";
 
 
 export default function LoginCard({ handleAuth, handleLink }) {
@@ -40,11 +40,11 @@ export default function LoginCard({ handleAuth, handleLink }) {
         password: password ? password : "",
       }));
       email
-      ? setInput({ email: "", password: "" })
-      : setInput((old) => ({
-        ...old,
-        password: "",
-      }));
+        ? setInput({ email: "", password: "" })
+        : setInput((old) => ({
+            ...old,
+            password: "",
+          }));
     } else {
       const code = await dispatch(login(input));
       if (!code) {
@@ -59,11 +59,11 @@ export default function LoginCard({ handleAuth, handleLink }) {
   };
 
   const handleForgotPasswordAccount = () => {
-    handleLink({forgotPasswordAccount:"forgotPasswordAccount"})
+    handleLink({ forgotPasswordAccount: "forgotPasswordAccount" });
   };
 
   const handleEnableAccount = () => {
-    handleLink({enableAccount:"enableAccount"})
+    handleLink({ enableAccount: "enableAccount" });
   };
   return (
     <div className={style.container}>
@@ -142,8 +142,10 @@ export default function LoginCard({ handleAuth, handleLink }) {
         <div className={style.buttonContainer}>
           <button type="submit">Iniciar Sesion</button>
         </div>
-          <div className={style.buttonContainer}>
-          <button type="submit" onClick={handleEnableAccount}>Recuperar Contraseña</button>
+        <div className={style.buttonContainer}>
+          <button type="submit" onClick={handleEnableAccount}>
+            Recuperar Contraseña
+          </button>
         </div>
       </form>
     </div>

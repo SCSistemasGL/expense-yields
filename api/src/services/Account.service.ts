@@ -1,11 +1,10 @@
-import { toCreateUser, toUpdateUser } from "../dto's/User.dto";
-import { AccountEntity } from "../entity/Account.entity";
-import { IUser, IUserUpdate } from "../utils/type";
-import { encryptedPassword } from "../utils/Crypted.utils";
+import { HttpError} from "routing-controllers";
+
 import { accountBody, accountNotPasswordBody, enableAccountBody, updateAccountBody } from "../dto's/Account.dto";
-import { HttpError, NotFoundError } from "routing-controllers";
 import { newRandomPassword } from "../utils/RandomPassword.utils";
 import sendEmailNewPassword from "../utils/InfoEmail.utils";
+import { encryptedPassword } from "../utils/Crypted.utils";
+import { AccountEntity } from "../entity/Account.entity";
 
 /**
  * 
