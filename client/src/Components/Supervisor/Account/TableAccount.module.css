@@ -1,0 +1,184 @@
+.container {
+    margin-top: 2rem;
+    background-color: beige;
+    border-top: 1px solid black;
+    width: 1130px;
+    border: 1px solid black;
+    /* height: 10%; */
+    border-radius: 1rem;
+    margin-bottom: 50px;
+    margin-left: 200px;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    position: relative;
+}
+
+.title h2 {
+    margin-left: 1rem;
+}
+
+.btn {
+    border-radius: .5em;
+    border: none;
+    width: 12rem;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    /* margin-top: 1rem; */
+    background-color: black;
+    /* background: linear-gradient(90deg, #668aff 0%, #003cff 50%, blue 100%); */
+    transition: all 0.3s ease-in-out;
+    color: white;
+    cursor: pointer;
+    margin-top: 1rem;
+    margin-left: 20rem;
+    position: relative;
+    margin-right: rem;
+}
+
+.btn:hover {
+    background-color: rgb(126, 188, 212);
+    /* color: hsl(226deg, 100%, 70%); */
+    /* background-color: hsl(226deg, 100%, 70%); */
+    color: white;
+    outline: 1px solid white !important;
+}
+
+.icon {
+    width: 1.5em;
+    height: 1.5em;
+    cursor: pointer;
+    /* color: #1e1e1e; */
+}
+
+.icon:hover {
+    color: hsl(226deg, 100%, 70%);
+
+}
+
+.headerTable {
+    display: flex;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    width: 1126px;
+    height: 2rem;
+    align-items: center;
+    background-color: #f8f9fa;
+}
+
+.titleId {
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    font-size: medium;
+    border-right: 1px solid black;
+}
+
+.titleName {
+    border-right: 1px solid black;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    font-size: medium;
+}
+
+.titleEmail {
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    border-right: 1px solid black;
+    font-size: medium;
+}
+
+.titleActive {
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    border-right: 1px solid black;
+    font-size: medium;
+}
+
+.titleRol {
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    border-right: 1px solid black;
+    font-size: medium;
+}
+
+.titleDate {
+    width: 300px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: medium;
+}
+
+.cardContainer {
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    width: 1000px;
+    border-bottom: 1px #adb5bd solid;
+}
+
+.cardContainer:hover {
+    cursor: pointer;
+    background-color: rgb(126, 188, 212);
+}
+
+.idUser {
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    font-size: small;
+}
+
+.name {
+    width: 200px;
+    display: flex;
+    font-size: small;
+    text-align: center;
+    justify-content: center;
+}
+
+.email {
+    width: 300px;
+    display: flex;
+    font-size: small;
+    justify-content: center;
+}
+
+.active {
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    font-size: small;
+}
+
+.rol {
+    width: 140px;
+    display: flex;
+    font-size: small;
+    justify-content: center;
+}
+
+.date {
+    width: 290px;
+    display: flex;
+    font-size: small;
+    justify-content: center;
+}
+
+.containerPagination {
+    position: relative;
+    bottom: .2rem;
+    padding-top: 1rem;
+    border-top: 1px #adb5bd solid;
+}

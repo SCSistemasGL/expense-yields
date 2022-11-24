@@ -57,3 +57,17 @@ export class accountNotPasswordBody {
   @IsEnum(UserRole)
   role: UserRole;
 }
+
+export class enableAccountBody {
+  @IsString()
+  @IsNotEmpty()
+  code: string;
+
+  @IsNotEmpty()
+  @IsEmail()
+  email: string;
+
+  @IsString()
+  @IsNotEmpty()
+  password: string;
+}

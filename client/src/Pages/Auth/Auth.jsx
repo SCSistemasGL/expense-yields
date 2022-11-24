@@ -6,9 +6,9 @@ import styles from "./Auth.module.css";
 //Cards
 import NavBarAuth from "../../Components/Navbar/NavBarAuth/NavBarAuth";
 import LoginCard from "../../Components/Auth/Login/LoginCard";
-import NewPasswordCard from "../../Components/Auth/NewPassword/NewPasswordCard";
-import ForgotPassword from "../../Components/Auth/ForgotPassword/ForgotPassword";
 
+import EnableAccountCard from "../../Components/Account/EnableAccount/EnableAccountCard";
+import ForgotPasswordAccount from "../../Components/Account/ForgotPasswordAccount/ForgotPasswordAccount";
 
 export default function Auth() {
   const auth = useSelector((state) => state.auth);
@@ -18,11 +18,10 @@ export default function Auth() {
 
 
   const handleAuth = () => {
-    console.log(auth)
     if (auth.role === "supervisor") navitage("/supervisor");
     else {
       navitage("/home");
-    }
+    };
   };
 
   useEffect(() => {
@@ -44,13 +43,13 @@ export default function Auth() {
       ) : (
         ""
       )}
-      {selectLink.newPassword ? (
-        <NewPasswordCard handleLink={setSelectLink} />
+      {selectLink.enableAccount ? (
+        <EnableAccountCard handleLink={setSelectLink} />
       ) : (
         ""
       )}
-      {selectLink.forgotPassword ? (
-        <ForgotPassword handleLink={setSelectLink} />
+      {selectLink.forgotPasswordAccount ? (
+        <ForgotPasswordAccount handleLink={setSelectLink} />
       ) : (
         ""
       )}

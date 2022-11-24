@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { Body, Delete, Get, HttpError, JsonController, Param, Params, Post, Put, Req, Res } from "routing-controllers";
-import { accountBody, accountNotPasswordBody, updateAccountBody } from "../dto's/Account.dto";
-import { findAccount, newAccountNotPassword, notActiveAccount, registerAccount, updateAccountEmail } from "../services/Account.service";
+import { accountBody, accountNotPasswordBody, enableAccountBody, updateAccountBody } from "../dto's/Account.dto";
+import { enableAccount, findAccount, newAccountNotPassword, notActiveAccount, registerAccount, updateAccountEmail } from "../services/Account.service";
 
 @JsonController('/account')
 export class AccountControllers {
@@ -9,6 +9,11 @@ export class AccountControllers {
   @Post('/')
   async createAcount(@Body() body: accountBody) {
     return await registerAccount(body);
+  };
+
+  @Get('/')
+  async getAccouns() {
+    return await findAccount(undefined);
   };
 
   @Get('/:id')
@@ -31,6 +36,10 @@ export class AccountControllers {
     return await newAccountNotPassword(body)
   }
 
+  @Put('/enable')
+  async forgotPassword(@Body() body: enableAccountBody) {
+    return await enableAccount(body)
+  };
 }
 
 
