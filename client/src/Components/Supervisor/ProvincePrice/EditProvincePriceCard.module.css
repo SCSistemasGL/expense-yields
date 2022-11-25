@@ -3,64 +3,60 @@
 }
 
 .container {
-    --pX: 1.5em;
     display: flex;
     flex-direction: column;
     width: 25em;
     max-width: 25em;
-    margin: 0 auto;
-    margin-bottom: 1rem;
     padding: 1em 1.5em;
     background-color: #fff;
     border-radius: 1em;
     box-shadow: 0 0.25em 0.5em #0005;
+    resize: none;
+    border: none;
+    margin-bottom: 16rem;
 }
 
-.data {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
 
-.container h4 {
-    margin-left: 0rem;
-}
-
-.data div {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    width: 15rem;
-    font-size: medium;
-    padding-left: 1rem;
-    margin-left: 4rem;
-    border-bottom: 2px solid hsl(226deg, 100%, 70%);
+.submit {
+    border: none;
+    border: 2px solid #aaa;
+    margin: 1em 0 0 0;
+    padding: 1em;
 }
 
 .inputGroup {
     display: flex;
     align-items: center;
     font-size: 0.9rem;
+    border: 1px solid #ccc;
     background-color: #fff;
     padding: 0 0 0 1em;
+    border-radius: 4px;
     overflow: hidden;
     margin-bottom: 2rem;
-    width: 40%;
+    width: 50%;
     margin-left: 10rem;
     margin-top: 0.5rem;
-    justify-content: center;
 }
 
-.data input {
+.inputGroup input {
     font-family: "Roboto";
-    padding: 0.75em;
+    padding: 0.7em;
     border: none;
     font-size: 0.9rem;
     border: none;
     resize: none;
     outline: 0;
-    justify-content: center;
-    align-items: center;
+}
+
+.inputGroup span {
+    font-family: "Roboto";
+    padding: 0.7em;
+    border: none;
+    font-size: medium;
+    border: none;
+    resize: none;
+    outline: 0;
 }
 
 .inputGroup :focus input {
@@ -68,91 +64,11 @@
     font-family: "Roboto";
 }
 
-.container {
-    resize: none;
-    border: none;
-}
-
-.flex {
-    width: 100%;
-    display: flex;
-    gap: 1em;
-    align-items: center;
-}
-
-.title {
-    display: flex;
-    justify-content: center;
-    color: #1e1e1e;
-    border-bottom: 1px solid #1e1e1e;
-    margin-bottom: 1rem;
-}
-
-.buttonContainer {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    margin: 2em 0 0 0;
-    transition: all 0.3s ease-in-out;
+.inputGroup:focus-within {
+    border: 2px solid hsl(226deg, 100%, 70%);
 }
 
 
-.buttonContainer button[type="submit"] {
-    border-radius: 5em;
-    border: none;
-    color: #fff;
-    background-color: red;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 1em;
-    text-align: center;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-}
-
-.buttonContainer button[type="submit"]:hover {
-    color: black;
-    outline: 2px solid black;
-}
-
-.wrapper h5 {
-    margin-top: 0;
-}
-
-.wrapper input {
-    border: none;
-    outline: 0;
-}
-
-.wrapper textarea {
-    border: none;
-    outline: 0;
-    height: 5rem;
-}
-
-.submit {
-    border-radius: 5em;
-    border: none;
-    color: #fff;
-    background-color: hsl(226deg, 100%, 70%);
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 1em;
-    text-align: center;
-    font-size: 1rem;
-    cursor: pointer;
-    margin-top: 2rem;
-    transition: all 0.3s ease-in-out;
-}
-
-.submit:hover {
-    color: black;
-    outline: 2px solid black;
-    ;
-}
 
 .inputGroup:focus-within.error {
     color: #f33;
@@ -165,7 +81,48 @@
     border-bottom: 2px solid red;
 }
 
+form button[type="submit"] {
+    border-radius: 5em;
+    height: 2.5rem;
+    border: none;
+    background-color: hsl(226deg, 100%, 70%);
+    width: 100%;
+    transition: all 0.3s ease-in-out;
+    color: white;
+    cursor: pointer;
+}
+
+form button[type="submit"]:hover {
+    color: black;
+    outline: 2px solid #1e1e1e !important;
+}
+
+form h1 {
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #1e1e1e;
+}
+
+form h2 {
+    margin-left: 1rem;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1e1e1e;
+    border-bottom: 1px solid #1e1e1e;
+}
+
 .errorSpan {
-    margin-top: 0.2rem;
+    margin-top: 0.3rem;
     color: #f33;
+    margin-left: 2.7rem;
+    font-size: .8rem;
+}
+
+.chart {
+    font-size: .8rem;
+    margin-left: 2.7rem;
 }

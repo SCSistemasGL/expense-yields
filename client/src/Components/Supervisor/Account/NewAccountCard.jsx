@@ -77,7 +77,7 @@ export default function NewAccountCard({ isNewAccount, handleAuth }) {
   return (
     <div className={style.container}>
       <form onSubmit={(e) => handleSubmit(e)}>
-        <h1>- Registrarse -</h1>
+        <h1>- Crear Cuenta -</h1>
         <label>
           <h5>Nombre:</h5>
           <div

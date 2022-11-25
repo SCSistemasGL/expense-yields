@@ -51,17 +51,20 @@ export default function Supervisor() {
   const isPrice = () => {
     setProvincePrice(false);
     dispatch(searchProvinceWithPrice());
+    dispatch(searchProvinceNotPrice());
   };
 
   const isUpdatePrice = () => {
     setIsEditProvince(false);
     dispatch(searchProvinceWithPrice());
+    dispatch(searchProvinceNotPrice());
   };
 
   const isNewAccount = () => {
     setSelectLink({ tableAccounts: "tableAccounts" });
     dispatch(searchProvinceWithPrice());
-  }
+    dispatch(searchProvinceNotPrice());
+  };
   return (
     <div className={style.container}>
       <NavBarToolsCard handleLink={setSelectLink} active={selectLink} />

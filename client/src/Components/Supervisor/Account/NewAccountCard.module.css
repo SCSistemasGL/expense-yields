@@ -1,23 +1,21 @@
 .container {
   border-radius: 1em;
   background-color: #fff;
-  box-shadow: 0.3em 0.25em 0.5em 0em #0005;
-  margin-top: 0rem;
-  max-width: 450px;
-  min-height: 670px;
+  box-shadow: 0.3em 0.25em 0.5em 0.5em #0005;
+  margin-top: 1rem;
+  max-width: 550px;
+  height: 530px;
   padding-bottom: 10px;
 }
 
 .container>form {
-  padding: 2.5em 5em;
+  padding: 1em 4em;
 }
 
 .container h1 {
   display: flex;
   justify-content: center;
-  margin-top: 0;
   border-bottom: 1px solid #1e1e1e;
-  margin-bottom: 0;
 }
 
 .container label {
@@ -103,10 +101,11 @@ form label {
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: 1em;
+  padding: .7em;
   text-align: center;
   font-size: 1rem;
   cursor: pointer;
+  /* margin-bottom: 2rem; */
 }
 
 .buttonContainer button[type="submit"]:hover {
