@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import style from "./EditProvincePriceCard.module.css";
 
 import { updateProvincePrice } from "../../../Redux/Actions/Supervisor";
+import { nameSpace } from "../../../Utils/name.utils";
 
 export default function EditProvincePriceCard({ data, isUpdatePrice }) {
   const dispatch = useDispatch();
@@ -44,60 +45,50 @@ export default function EditProvincePriceCard({ data, isUpdatePrice }) {
   };
 
   return (
-    <div className={style.container} key={data.id}>
-      <div className={style.title}>
-        <h2>CAMBIAR PRECIO POR KM</h2>
-      </div>
-      <div className={style.data}>
-        <h4>PROVINCIA:</h4>
-        <div>{data.nameProvince}</div>
-        <h4>PRECIO ACTUAL:</h4>
-        <div>$ {data.priceKm}</div>
-      </div>
-      {/* {data.feedback == "false" ? (
+    <div className={style.container}>
+      <form onSubmit={(e) => handleSubmit(e)}>
+        <h1>- PRECIO POR KM -</h1>
+        <label>
+          <h2>Provincia:</h2>
+          <div className={style.inputGroup}>
+            <span>{nameSpace(data.nameProvince)}</span>
+          </div>
+        </label>
+        <label>
+          <h2>Precio Actual:</h2>
+          <div className={style.inputGroup}>
+            <span>$ {data.priceKm}</span>
+          </div>
+        </label>
         <div>
-          <div className={style.data}>
-            <h4>Classification:</h4>
-            <div>{data.classification}</div>
-            <h4>Assigned Technician:</h4>
-            <div>
-              {!data.assigned_technician || data.assigned_technician == "false"
-                ? "Unassigned at the moment"
-                : data.assigned_technician}
+          <label>
+            <h2>Precio por km:</h2>
+            <div className={style.inputGroup}>
+              <input
+                type="number"
+                value={input.priceKm}
+                name="priceKm"
+                onChange={(e) => handleChange(e)}
+                placeholder="Precio por km"
+              />
             </div>
+          </label>
+          <div>
+            {errors.priceKm ? (
+              <span className={style.errorSpan}>{errors.priceKm}</span>
+            ) : (
+              ""
+            )}
           </div>
+        </div>
+        {input.priceKm ? (
           <div className={style.buttonContainer}>
-            <button type="submit" onClick={handleCancel}>
-              Cancel Ticket
-            </button>
+            <button type="submit">Agregar Precio</button>
           </div>
-        </div>
-      ) : ( */}
-      <div className={style.data}>
-        <h4>NUEVO PRECIO</h4>
-        <div
-          className={`${style.inputGroup} ${
-            errors.precioKm ? style.error : ""
-          } `}
-        >
-          <input
-            type="number"
-            value={input.priceKm}
-            name="priceKm"
-            onChange={(e) => handleChange(e)}
-            placeholder="Precio por km"
-          />
-        </div>
-        {errors.priceKm ? (
-          <span className={style.errorSpan}>{errors.priceKm}</span>
         ) : (
           ""
         )}
-
-        <button className={style.submit} onClick={handleSubmit}>
-          Send
-        </button>
-      </div>
+      </form>
     </div>
   );
 }

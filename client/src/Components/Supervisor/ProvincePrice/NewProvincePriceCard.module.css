@@ -88,6 +88,7 @@ form button[type="submit"]:hover {
 form h1 {
   display: flex;
   justify-content: center;
+  border-bottom: 1px solid #1e1e1e;
 }
 
 form h2 {
