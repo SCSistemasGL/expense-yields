@@ -12,14 +12,13 @@ import { logout } from "../../Redux/Actions/Auth";
 export default function Navbar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const session = useSelector((store) => store.auth.token);
+  const session = useSelector((store) => store.auth);
   const path = useLocation().pathname;
 
   const logoutNav = () => {
     dispatch(logout());
     navigate("/auth/login");
   };
-
 
   return (
     <header className={styles.navbar}>
