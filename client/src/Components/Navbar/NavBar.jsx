@@ -17,8 +17,9 @@ export default function Navbar() {
 
   const logoutNav = () => {
     dispatch(logout());
-    navigate("/auth");
+    navigate("/auth/login");
   };
+
 
   return (
     <header className={styles.navbar}>
@@ -33,7 +34,7 @@ export default function Navbar() {
               />
             </Link>
           ) : (
-            <Link className={styles.brand} to="/auth">
+            <Link className={styles.brand} to="/auth/login">
               <img
                 src="https://servi-compras.com.ar/img/logoServiComprasHeader.svg"
                 className={styles.logo}

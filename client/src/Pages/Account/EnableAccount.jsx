@@ -4,14 +4,10 @@ import { useSelector } from "react-redux";
 
 import styles from "./Auth.module.css";
 
-//Cards
-import NavBarAuth from "../../Components/Navbar/NavBarAuth/NavBarAuth";
-import LoginCard from "../../Components/Auth/Login/LoginCard";
 
 import EnableAccountCard from "../../Components/Account/EnableAccount/EnableAccountCard";
-import ForgotPasswordAccount from "../../Components/Account/ForgotPasswordAccount/ForgotPasswordAccount";
 
-export default function Auth() {
+export default function EnableAccount() {
   const auth = useSelector((state) => state.auth);
   const navitage = useNavigate();
 
@@ -36,22 +32,7 @@ export default function Auth() {
   return (
     <div className={styles.container}>
       <div className={styles.auth}>
-        {/* <NavBarAuth handleLink={setSelectLink} active={selectLink} signup /> */}
-        {selectLink.login ? (
-          <LoginCard handleAuth={handleAuth} handleLink={setSelectLink} />
-        ) : (
-          ""
-        )}
-        {selectLink.enableAccount ? (
-          <EnableAccountCard handleLink={setSelectLink} />
-        ) : (
-          ""
-        )}
-        {selectLink.forgotPasswordAccount ? (
-          <ForgotPasswordAccount handleLink={setSelectLink} />
-        ) : (
-          ""
-        )}
+        <EnableAccountCard handleLink={setSelectLink} />
       </div>
       <div className={styles.img}></div>
     </div>

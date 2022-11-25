@@ -4,20 +4,30 @@ import { Navigate, Outlet, useNavigate } from "react-router-dom";
 import { logout } from "../../Redux/Actions/Auth";
 
 function PrivateRoute() {
-  const isAuth = useSelector((state) => state.auth.token);
-  const expires = useSelector((state) => state.auth.expires);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const isAuth = useSelector((state) => state.auth);
+  const { role, expires, token } = isAuth;
 
   if (expires) {
-    if (new Date(Date.now()) > new Date(expires)) {
+    if (new Date(Date.now()) > new Date(isAuth.expires)) {
       dispatch(logout());
       alert("Session expired");
-      return navigate("/auth");
+      return navigate("/auth/login");
     }
   }
 
-  return isAuth ? <Outlet /> : <Navigate to="/auth" />;
+  console.log("role", isAuth);
+  if (!role) {
+    return navigate("/auth/login");
+  }
+
+  if (role === "supervisor") {
+    return navigate("/supervisor");
+  }
+  if (role === "user") {
+    return navigate("/home");
+  }
 }
 
 export default PrivateRoute;

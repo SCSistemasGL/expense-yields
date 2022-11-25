@@ -6,11 +6,12 @@ import style from "./LoginCard.module.css";
 
 import { login } from "../../../Redux/Actions/Auth";
 import { validateLogin } from "../../../Utils/validate";
+import { useNavigate } from "react-router-dom";
 
-
-export default function LoginCard({ handleAuth, handleLink }) {
+export default function LoginCard() {
   const dispatch = useDispatch();
   const [keyOn, setKeyOn] = useState(false);
+  const navigate = useNavigate();
 
   const [errors, setErrors] = useState({
     email: "",
@@ -47,24 +48,25 @@ export default function LoginCard({ handleAuth, handleLink }) {
           }));
     } else {
       const code = await dispatch(login(input));
-      if (!code) {
-        handleAuth();
-      } else {
+      if (code) {
         setErrors((old) => ({
           ...old,
-          code: code.error,
+          code: code.message,
         }));
+      } else {
+        navigate('/supervisor')
       }
     }
   };
 
   const handleForgotPasswordAccount = () => {
-    handleLink({ forgotPasswordAccount: "forgotPasswordAccount" });
+    navigate("/account/forgot");
   };
 
   const handleEnableAccount = () => {
-    handleLink({ enableAccount: "enableAccount" });
+    navigate("/account/enable");
   };
+
   return (
     <div className={style.container}>
       <form onSubmit={(e) => handleSubmit(e)}>
@@ -144,7 +146,7 @@ export default function LoginCard({ handleAuth, handleLink }) {
         </div>
         <div className={style.buttonContainer}>
           <button type="submit" onClick={handleEnableAccount}>
-            Recuperar Contraseña
+            Habilitar Cuenta
           </button>
         </div>
       </form>

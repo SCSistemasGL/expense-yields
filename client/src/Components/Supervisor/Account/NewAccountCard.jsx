@@ -1,6 +1,6 @@
 import Select from "react-select";
 import { useDispatch } from "react-redux";
-import { FaUserCircle} from "react-icons/fa";
+import { FaUserCircle } from "react-icons/fa";
 import React, { useEffect, useState } from "react";
 
 import { validateSignup } from "../../../Utils/validate";
@@ -9,10 +9,8 @@ import style from "./NewAccountCard.module.css";
 import optionSelectRol from "../../../Utils/optionRol";
 import { newAccountNotPassword } from "../../../Redux/Actions/Account";
 
-export default function NewAccountCard({ handleLink, handleAuth }) {
+export default function NewAccountCard({ isNewAccount, handleAuth }) {
   const dispatch = useDispatch();
-  const [keyOn, setKeyOn] = useState(false);
-
   const [optionRol, setOptionRol] = useState([]);
 
   useEffect(() => {
@@ -47,8 +45,7 @@ export default function NewAccountCard({ handleLink, handleAuth }) {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { firstName, email, lastName, role } =
-      validateSignup(input);
+    const { firstName, email, lastName, role } = validateSignup(input);
     if (email || firstName || lastName) {
       setErrors((old) => ({
         ...old,
@@ -63,7 +60,7 @@ export default function NewAccountCard({ handleLink, handleAuth }) {
         const code = await dispatch(newAccountNotPassword(input));
         if (!code) {
           alert("Usuario creado con éxito!");
-          handleLink({ login: "login" });
+          isNewAccount();
         } else {
           setErrors((old) => ({
             ...old,
@@ -72,7 +69,7 @@ export default function NewAccountCard({ handleLink, handleAuth }) {
         }
       } else {
         alert("Usuario NO CREADO!");
-        handleLink({ login: "login" });
+        isNewAccount();
       }
     }
   };

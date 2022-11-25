@@ -21,6 +21,9 @@ export const authLogin = async (user: loginBody) => {
   if (isUser[0] === undefined) {
     throw new HttpError(404, "El usuario no se encuentra registrado");
   } else {
+    if (!isUser[0].isActive) {
+      throw new HttpError(404, "La cuenta no esta habilitada!")
+    }
     const isPassword = await desCryptedPasswotd(
       user.password,
       isUser[0].password
@@ -28,18 +31,21 @@ export const authLogin = async (user: loginBody) => {
     if (!isPassword) {
       throw new HttpError(401, "La contraseña o el mail es incorrecto!");
     } else {
+
       const token = jsw.sign({ user: isUser[0] }, "secretKey", {
         expiresIn: JWT_EXPIRE_TIME,
       });
       return {
         msg: "El usuario esta habilitado",
         email: isUser[0].email,
-        // role:isUser[0].role,
+        role:isUser[0].role,
         token,
       };
     }
   }
-};
+}
+
+
 
 export const authForgotPassword = async (
   account: forgotPasswordBody

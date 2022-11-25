@@ -1,38 +1,44 @@
 import React, { useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { forgotPasswordAccount } from "../../../Redux/Actions/Account";
 import { newPasswordUser } from "../../../Redux/Actions/Auth";
 
-import style from "./ForgotPasswordAccount.module.css";
+import style from "./ForgotPasswordAccountCard.module.css";
 
-export default function ForgotPasswordAccount({ handleLink }) {
+export default function ForgotPasswordAccountCard({ handleLink }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const [errors, setErrors] = useState({
-    reason: "",
-  });
+  const [errors, setErrors] = useState("");
   const [input, setInput] = useState({
     email: "",
   });
 
   const handleChange = ({ target: { name, value } }) => {
     setInput((old) => ({ ...old, [name]: value }));
-    setErrors({
-      reason: "",
-    });
+    setErrors("");
+  };
+
+  const handleLogin = () => {
+    navigate("/auth/login");
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    var conf = window.confirm("Seguro que quieres hacer esta accion??");
-    if (conf) {
-      await dispatch(forgotPasswordAccount(input));
-      alert("Se envio el codigo para recuperar la contraseña al email!");
-      handleLink({ login: "login" });
+    if (!input.email) {
+      setErrors("Error, debe proporcionar un email!");
     } else {
-      alert("No se envio el formulario");
-      handleLink({ login: "login" });
+      var conf = window.confirm("Seguro que quieres hacer esta accion??");
+      if (conf) {
+        await dispatch(forgotPasswordAccount(input));
+        alert("Se envio el codigo para recuperar la contraseña al email!");
+        navigate("/auth/login");
+      } else {
+        alert("No se envio el formulario");
+        navigate("/auth/login");
+      }
     }
   };
 
@@ -45,15 +51,11 @@ export default function ForgotPasswordAccount({ handleLink }) {
       <label className={style.wrapper}>
         PARA RECUPERAR LA CONTRASEÑA INTRODUZCA SU EMAIL:
         <div
-          className={`${style.inputGroup} ${errors.reason ? style.error : ""} `}
+          className={`${style.inputGroup} ${errors ? style.error : ""} `}
         ></div>
         <label>
           <h3>Email</h3>
-          <div
-            className={`${style.inputGroup} ${
-              errors.email ? style.error : ""
-            } `}
-          >
+          <div className={`${style.inputGroup} ${errors ? style.error : ""} `}>
             <FaUserCircle />
             <input
               type="text"
@@ -65,9 +67,14 @@ export default function ForgotPasswordAccount({ handleLink }) {
           </div>
         </label>
       </label>
-
+      <div>
+        {errors ? <span className={style.errorSpan}>{errors}</span> : ""}
+      </div>
       <button className={style.submit} type="submit">
         Enviar
+      </button>
+      <button className={style.submit} onClick={handleLogin} type="submit">
+        Login
       </button>
     </form>
   );

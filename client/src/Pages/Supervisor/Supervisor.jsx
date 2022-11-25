@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 
 import TableProvincePrice from "../../Components/Supervisor/ProvincePrice/TableProvincePrice";
 import NewProvincePriceCard from "../../Components/Supervisor/ProvincePrice/NewProvincePriceCard";
-import NavBarTools from "../../Components/Navbar/NavBarTool/NavBarTools";
 
 import style from "./Supervisor.module.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,6 +13,7 @@ import { searchAccounts } from "../../Redux/Actions/Account";
 import TableAccount from "../../Components/Supervisor/Account/TableAccount";
 import NewAccountCard from "../../Components/Supervisor/Account/NewAccountCard";
 import EditProvincePriceCard from "../../Components/Supervisor/ProvincePrice/EditProvincePriceCard";
+import NavBarToolsCard from "../../Components/Navbar/NavBarTools/NavBarToolsCard";
 
 export default function Supervisor() {
   const dispatch = useDispatch();
@@ -57,9 +57,14 @@ export default function Supervisor() {
     setIsEditProvince(false);
     dispatch(searchProvinceWithPrice());
   };
+
+  const isNewAccount = () => {
+    setSelectLink({ tableAccounts: "tableAccounts" });
+    dispatch(searchProvinceWithPrice());
+  }
   return (
     <div className={style.container}>
-      <NavBarTools handleLink={setSelectLink} active={selectLink} />
+      <NavBarToolsCard handleLink={setSelectLink} active={selectLink} />
 
       {newProvincePrice ? (
         <div
@@ -94,7 +99,7 @@ export default function Supervisor() {
 
       {selectLink.accountAdd ? (
         <div>
-          <NewAccountCard handleLink={setSelectLink} active={selectLink} />
+          <NewAccountCard isNewAccount={isNewAccount} active={selectLink} />
         </div>
       ) : (
         ""
