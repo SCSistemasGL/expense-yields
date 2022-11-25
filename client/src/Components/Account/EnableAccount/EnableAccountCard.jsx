@@ -3,16 +3,16 @@ import { useDispatch } from "react-redux";
 import { BsFillChatSquareDotsFill } from "react-icons/bs";
 import { FaUserCircle, FaKey, FaEye } from "react-icons/fa";
 
-
-
 import style from "./EnableAccountCard.module.css";
 
 import { enableAccount } from "../../../Redux/Actions/Account";
 import { validateLogin } from "../../../Utils/validate";
+import { useNavigate } from "react-router-dom";
 
-export default function EnableAccountCard({ handleLink }) {
+export default function EnableAccountCard() {
   const dispatch = useDispatch();
   const [keyOn, setKeyOn] = useState(false);
+  const navigate = useNavigate();
 
   const [errors, setErrors] = useState({
     email: "",
@@ -54,7 +54,7 @@ export default function EnableAccountCard({ handleLink }) {
         const codeRes = await dispatch(enableAccount(input));
         if (!codeRes) {
           alert("Cuenta habilitada!");
-          handleLink({ login: "login" });
+          navigate("/auth/login");
         } else {
           setErrors((old) => ({
             ...old,
@@ -63,7 +63,7 @@ export default function EnableAccountCard({ handleLink }) {
         }
       } else {
         alert("No se cambio su contraseña");
-        handleLink({ login: "login" });
+        navigate("/auth/login");
       }
     }
   };

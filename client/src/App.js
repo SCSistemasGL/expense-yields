@@ -6,20 +6,30 @@ import LandingPage from "./Pages/Landing/LandingPage";
 import PrivateRoute from "./Components/TypeRoute/PrivateRoute";
 import Navbar from "./Components/Navbar/NavBar";
 
-import Auth from "./Pages/Auth/Auth";
 import Home from "./Pages/Home/Home";
-import Supervisor from "./Pages/Supervisor/Supervisor"
+import Supervisor from "./Pages/Supervisor/Supervisor";
+import Login from "./Pages/Auth/Login";
+import EnableAccount from "./Pages/Account/EnableAccount";
+import ForgotPasswordAccount from "./Pages/Account/ForgotPasswordAccount";
+import { useSelector } from "react-redux";
 
 function App() {
+
   return (
     <div>
       <Navbar />
       <Routes>
         <Route exact path="/" element={<LandingPage />} />
-        <Route path="auth" element={<Auth />} />
-        <Route element={<PrivateRoute />}>
-          <Route path="home" element={<Home />} />
+        <Route path="auth">
+          <Route path="login" element={<Login />} />
+        </Route>
+        <Route path="account">
+          <Route path="enable" element={<EnableAccount />} />
+          <Route path="forgot" element={<ForgotPasswordAccount />} />
+        </Route>
           <Route path="supervisor" element={<Supervisor />} />
+          <Route path="home" element={<Home />} />
+        <Route element={<PrivateRoute />}>
         </Route>
       </Routes>
     </div>

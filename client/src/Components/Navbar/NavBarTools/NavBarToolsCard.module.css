@@ -8,8 +8,8 @@
     align-items: center;
     display: flex;
     flex-direction: column;
-    left: 2rem;
-    top: 5rem;
+    left: 0rem;
+    top: 4rem;
     border: solid black 1px;
     border-radius: 5px;
     background-color: antiquewhite;
@@ -34,7 +34,7 @@
     transform: translate(-50%, 0);
     width: 0.5em;
     height: 0.5em;
-    border-radius: 100%;
+    /* border-radius: 100%; */
     background-color: transparent;
     transition: all 0.25s;
     cursor: pointer;
@@ -43,7 +43,7 @@
 .navItems:hover::after {
     display: block;
     bottom: -0.5em;
-    background-color: rgb(255, 20, 150)
+    /* background-color: rgb(255, 20, 150) */
 }
 
 .navName {
@@ -52,7 +52,7 @@
 
 .icon {
     width: 1.5em;
-    height: 1.5em;
+    height: 1em;
     cursor: pointer;
     margin-left: 0.5rem;
 

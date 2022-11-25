@@ -54,7 +54,8 @@
 
 .brand>img {
   margin: 0 1em 0 0;
-  background: white;
+  background:white;
+  border-radius: 90%;
 }
 
 .logo {

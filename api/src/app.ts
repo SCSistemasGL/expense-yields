@@ -7,7 +7,6 @@ import path from "path";
 import * as dotenv from 'dotenv'
 dotenv.config()
 import { createExpressServer, NotFoundError } from 'routing-controllers';
-import routes from "./router";
 import controller from './controllers/index'
 
 
